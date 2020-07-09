@@ -46,18 +46,18 @@ application =
 
 ## Content Scaling
 
-Since most apps are developed for multiple devices and screen resolutions, Corona features several __content&nbsp;scaling__ options. This allows you to use a common set of screen coordinates while Corona automatically scales text, vector objects, and images to different resolutions depending on the device.
+Since most apps are developed for multiple devices and screen resolutions, CORONA_CORE_PRODUCT features several __content&nbsp;scaling__ options. This allows you to use a common set of screen coordinates while CORONA_CORE_PRODUCT automatically scales text, vector objects, and images to different resolutions depending on the device.
 
-Corona can scale both upward or downward depending on your starting resolution. It can also substitute image files of differing resolution when needed, ensuring that your app appears clear and sharp on all devices (see [Dynamic&nbsp;Image&nbsp;Selection](#dynamicimages) below).
+CORONA_CORE_PRODUCT can scale both upward or downward depending on your starting resolution. It can also substitute image files of differing resolution when needed, ensuring that your app appears clear and sharp on all devices (see [Dynamic&nbsp;Image&nbsp;Selection](#dynamicimages) below).
 
 <div class="guide-notebox">
 <div class="notebox-title">Content Area</div>
 
-A fundamental concept behind content scaling is __content&nbsp;area__. In Corona, your base content area can be whatever you wish, but often it's based around a common screen width/height aspect ratio like 2:3, for example 320&times;480.
+A fundamental concept behind content scaling is __content&nbsp;area__. In CORONA_CORE_PRODUCT, your base content area can be whatever you wish, but often it's based around a common screen width/height aspect ratio like 2:3, for example 320&times;480.
 
 The content area represents the overall "stage" on which text, vector objects, and image assets are displayed. Everything will be positioned in relation to this content area, which may or may not match the screen's actual pixel resolution. The content area will be __scaled__ to fit the screen, with subtle differences dictated by the `scale` definition (see __scale__ below).
 
-The internal __coordinate system__ is also dependent on the content area, with coordinates `(0,0)` residing in the top-left corner of the content area, __not__ necessarily the top-left corner of the screen. For more information on the Corona coordinate system, see the [Group&nbsp;Programming&nbsp;Guide][guide.graphics.group].
+The internal __coordinate system__ is also dependent on the content area, with coordinates `(0,0)` residing in the top-left corner of the content area, __not__ necessarily the top-left corner of the screen. For more information on the CORONA_CORE_PRODUCT coordinate system, see the [Group&nbsp;Programming&nbsp;Guide][guide.graphics.group].
 
 </div>
 
@@ -155,13 +155,13 @@ application =
 
 ## Dynamic Image Selection
 
-In addition to content scaling, Corona supports __dynamic image selection__. If you are developing an app for both normal and Retina/HD devices, you should not rely on Corona to simply scale one set of images across a wide array of screen resolutions. There are several issues related to this:
+In addition to content scaling, CORONA_CORE_PRODUCT supports __dynamic image selection__. If you are developing an app for both normal and Retina/HD devices, you should not rely on CORONA_CORE_PRODUCT to simply scale one set of images across a wide array of screen resolutions. There are several issues related to this:
 
-1. If you design all of your images in low resolution and allow Corona to scale them up for Retina/HD devices, the images will appear blurry or pixelated. Not only will this result in poor visual appearance, but it may cause the app to be rejected before it reaches the marketplace.
+1. If you design all of your images in low resolution and allow CORONA_CORE_PRODUCT to scale them up for Retina/HD devices, the images will appear blurry or pixelated. Not only will this result in poor visual appearance, but it may cause the app to be rejected before it reaches the marketplace.
 
-2. In contrast, if you design all of your images for Retina/HD and allow Corona to scale them down for lower resolution devices, the larger images will require the same amount of texture memory on those devices. This may adversely affect the performance of your app — or worse, those images will not appear if they exceed the maximum texture size on a device.
+2. In contrast, if you design all of your images for Retina/HD and allow CORONA_CORE_PRODUCT to scale them down for lower resolution devices, the larger images will require the same amount of texture memory on those devices. This may adversely affect the performance of your app — or worse, those images will not appear if they exceed the maximum texture size on a device.
 
-The solution is to create __multiple versions__ of every image, tailored for two or three different resolutions, and name them according to the "image&nbsp;set" they belong to. On each device, Corona will automatically select images from the set that most closely matches the content area and scale.
+The solution is to create __multiple versions__ of every image, tailored for two or three different resolutions, and name them according to the "image&nbsp;set" they belong to. On each device, CORONA_CORE_PRODUCT will automatically select images from the set that most closely matches the content area and scale.
 
 <div class="guide-notebox-imp">
 <div class="notebox-title-imp">Important</div>
@@ -182,24 +182,24 @@ imageSuffix =
 
 As indicated, each __image suffix__ must be specified within brackets and quotes as in `["@2x"]`. The suffix can be named whatever you want, but it should be short and logical since you must append the same suffix to __all__ image files designed for that image set. When adding a suffix to each image file, do not include the bracket or quotes — just append the suffix itself, for example `myImage@2x.png` or `myImage@4x.png`.
 
-The second part of each declaration is the __scale&nbsp;factor__. This value specifies the scale threshold above which Corona will use images in that suffix set. The following code can help you determine the proper values:
+The second part of each declaration is the __scale&nbsp;factor__. This value specifies the scale threshold above which CORONA_CORE_PRODUCT will use images in that suffix set. The following code can help you determine the proper values:
 
 ``````lua
 print( display.pixelWidth / display.actualContentWidth )
 ``````
 
-Add this code to your project, access the Corona Simulator, and use __Window&nbsp;&rarr;&nbsp;View&nbsp;As__ to simulate different devices. Note the output in the Corona Simulator Console — this is the scale factor for the device. If the value on a particular device is __greater&nbsp;than__ or __equal&nbsp;to__ the number you specify for the scale factor, Corona will use images from that suffix set.
+Add this code to your project, access the CORONA_CORE_PRODUCT Simulator, and use __Window&nbsp;&rarr;&nbsp;View&nbsp;As__ to simulate different devices. Note the output in the CORONA_CORE_PRODUCT Simulator Console — this is the scale factor for the device. If the value on a particular device is __greater&nbsp;than__ or __equal&nbsp;to__ the number you specify for the scale factor, CORONA_CORE_PRODUCT will use images from that suffix set.
 
 <div class="guide-notebox-imp">
 <div class="notebox-title-imp">Important</div>
 
-If you use widgets from the Corona [widget][api.library.widget] library, you must adhere to the standardized `@2x` and `@4x` suffix options, otherwise the proper <nobr>hi-resolution</nobr> assets will not be selected on Retina/HD devices. Note that this rule does not apply for <nobr>visually-customized</nobr> widgets for which you've created custom assets and/or image sheets &mdash; in&nbsp;this case you can use any suffix setup and name the assets accordingly.
+If you use widgets from the CORONA_CORE_PRODUCT [widget][api.library.widget] library, you must adhere to the standardized `@2x` and `@4x` suffix options, otherwise the proper <nobr>hi-resolution</nobr> assets will not be selected on Retina/HD devices. Note that this rule does not apply for <nobr>visually-customized</nobr> widgets for which you've created custom assets and/or image sheets &mdash; in&nbsp;this case you can use any suffix setup and name the assets accordingly.
 
 </div>
 
 ### Example
 
-In the following example, just one suffix is defined (`"@2x"`), but it accommodates several <nobr>high-resolution</nobr> devices. Resolutions below this scale factor will simply use the <nobr>non-suffixed</nobr> image set. A <nobr>non-suffixed</nobr> image set should be included in every project as a basic precaution — this ensures that if a particular device falls outside of the scale factor range(s) you've defined, Corona can use these images instead.
+In the following example, just one suffix is defined (`"@2x"`), but it accommodates several <nobr>high-resolution</nobr> devices. Resolutions below this scale factor will simply use the <nobr>non-suffixed</nobr> image set. A <nobr>non-suffixed</nobr> image set should be included in every project as a basic precaution — this ensures that if a particular device falls outside of the scale factor range(s) you've defined, CORONA_CORE_PRODUCT can use these images instead.
 
 ``````lua
 application = 
@@ -223,7 +223,7 @@ application =
 <div class="guide-notebox">
 <div class="notebox-title">Note</div>
 
-Although you can define as many image sets as you wish, there are simply too many screen sizes and aspect ratios to achieve a perfect 1:1 ratio on all of them. Thus, you must accept some degree of scaling, even when using dynamic image selection. In most cases, you should set up image suffixes that target devices of similar resolution, then allow Corona to scale the images up or down slightly depending on the device. This minor degree of scaling will generally not be perceived by the end user, since most modern devices have a very high pixel density. As noted at the top of this section, it's better to scale images down versus up and you should attempt to construct a scaling setup that achieves this on the most popular devices.
+Although you can define as many image sets as you wish, there are simply too many screen sizes and aspect ratios to achieve a perfect 1:1 ratio on all of them. Thus, you must accept some degree of scaling, even when using dynamic image selection. In most cases, you should set up image suffixes that target devices of similar resolution, then allow CORONA_CORE_PRODUCT to scale the images up or down slightly depending on the device. This minor degree of scaling will generally not be perceived by the end user, since most modern devices have a very high pixel density. As noted at the top of this section, it's better to scale images down versus up and you should attempt to construct a scaling setup that achieves this on the most popular devices.
 
 </div>
 
@@ -234,7 +234,7 @@ Although you can define as many image sets as you wish, there are simply too man
 
 ## Content Properties
 
-Several properties are exposed within Corona to help you work with scaled content, including those mentioned below. Please refer to the [API Reference][api.library.display] for a complete list.
+Several properties are exposed within CORONA_CORE_PRODUCT to help you work with scaled content, including those mentioned below. Please refer to the [API Reference][api.library.display] for a complete list.
 
 * [display.contentWidth][api.library.display.contentWidth] and [display.contentHeight][api.library.display.contentHeight] — <nobr>read-only</nobr> properties representing the original width and height of the content, in pixels.
 
@@ -242,7 +242,7 @@ Several properties are exposed within Corona to help you work with scaled conten
 
 * [display.viewableContentWidth][api.library.display.viewableContentWidth] and [display.viewableContentHeight][api.library.display.viewableContentHeight] — <nobr>read-only</nobr> properties representing the __viewable__ width and height. This is useful if you're using `zoomEven` scaling, as it will reveal the viewable (uncropped) measurements, in pixels.
 
-* [display.actualContentWidth][api.library.display.actualContentWidth] and [display.actualContentHeight][api.library.display.actualContentHeight] — <nobr>read-only</nobr> properties representing the width and height in Corona content units of the screen. The result depends on the `scale` setting mentioned above.
+* [display.actualContentWidth][api.library.display.actualContentWidth] and [display.actualContentHeight][api.library.display.actualContentHeight] — <nobr>read-only</nobr> properties representing the width and height in CORONA_CORE_PRODUCT content units of the screen. The result depends on the `scale` setting mentioned above.
 
 * [display.contentCenterX][api.library.display.contentCenterX] and [display.contentCenterY][api.library.display.contentCenterY] — <nobr>read-only</nobr> properties representing the center of the content area, useful for positioning objects along either central axis.
 
@@ -253,7 +253,7 @@ Several properties are exposed within Corona to help you work with scaled conten
 
 ## Runtime Errors
 
-In the Corona Simulator, there is a setting under __Preferences__ called __Show&nbsp;Runtime&nbsp;Errors__ which defaults to __on__. This global setting triggers <nobr>pop-up</nobr> error messages while running an app in the Simulator. If you don't like this feature or if it doesn't fit your workflow, you can turn it off.
+In the CORONA_CORE_PRODUCT Simulator, there is a setting under __Preferences__ called __Show&nbsp;Runtime&nbsp;Errors__ which defaults to __on__. This global setting triggers <nobr>pop-up</nobr> error messages while running an app in the Simulator. If you don't like this feature or if it doesn't fit your workflow, you can turn it off.
 
 You can also set this on a per-app basis from `config.lua` to control error messages while running the app on a device. `showRuntimeErrors` accepts a boolean value <nobr>(`true` or `false`)</nobr>. The default depends on whether the app is built for distribution: if an app is built with a developer provisioning profile or the debug keystore then `showRuntimeErrors` will default to `true`, otherwise it will default to `false`.  Obviously, an explicit setting will override the default.
 
@@ -318,7 +318,7 @@ application =
 
 ## App Licensing
 
-The Corona [licensing][api.library.licensing] library lets you confirm that the app was bought from a store. To implement licensing, the `license` table must be added to the `application` table of `config.lua`:
+The CORONA_CORE_PRODUCT [licensing][api.library.licensing] library lets you confirm that the app was bought from a store. To implement licensing, the `license` table must be added to the `application` table of `config.lua`:
 
 ``````lua
 application =
@@ -360,7 +360,7 @@ application =
 
 ### Fine Tuning
 
-Assigning a string value as outlined above will change the meaning of all precision qualifier macros. Thus, another option is to set individual precision macros by assigning a table to `shaderPrecision`. This table should contain Corona precision qualifier macros as keys and OpenGL&nbsp;ES precision qualifiers as values, for example:
+Assigning a string value as outlined above will change the meaning of all precision qualifier macros. Thus, another option is to set individual precision macros by assigning a table to `shaderPrecision`. This table should contain CORONA_CORE_PRODUCT precision qualifier macros as keys and OpenGL&nbsp;ES precision qualifiers as values, for example:
 
 ``````lua
 application =
