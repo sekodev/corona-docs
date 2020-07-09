@@ -234,7 +234,7 @@ Although you can define as many image sets as you wish, there are simply too man
 
 ## Content Properties
 
-Several properties are exposed within CORONA_CORE_PRODUCT to help you work with scaled content, including those mentioned below. Please refer to the [API Reference][api.library.display] for a complete list.
+Several properties are exposed within CORONA_CORE_PRODUCT to help you work with scaled content, including those mentioned below. Please refer to [display library][api.library.display] for a complete list.
 
 * [display.contentWidth][api.library.display.contentWidth] and [display.contentHeight][api.library.display.contentHeight] — <nobr>read-only</nobr> properties representing the original width and height of the content, in pixels.
 
@@ -318,7 +318,7 @@ application =
 
 ## App Licensing
 
-The CORONA_CORE_PRODUCT [licensing][api.library.licensing] library lets you confirm that the app was bought from a store. To implement licensing, the `license` table must be added to the `application` table of `config.lua`:
+[Licensing][api.library.licensing] library lets you confirm that the app was bought from a store. To implement licensing, the `license` table must be added to the `application` table of `config.lua`:
 
 ``````lua
 application =
