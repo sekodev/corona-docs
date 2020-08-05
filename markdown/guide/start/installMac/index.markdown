@@ -75,7 +75,7 @@ Installing CORONA_CORE_PRODUCT lets you create and test apps locally on your Mac
 1. Go to [JDK8 download](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) page.
 2. Click the __JDK__ download link to obtain the corresponding <nobr>Java Platform (JDK)</nobr>.
 3. On the next page, read the license agreement and click the option to accept it if you agree.
-4. Locate the <nobr>__Mac OS X__</nobr> link and click it to download the file. This file will be named approximately <nobr>`jdk-8u261-macosx-x64.dmg`</nobr>.
+4. Locate the macOS link and click it to download the file. This file will be named approximately <nobr>`jdk-8u261-macosx-x64.dmg`</nobr>.
 5. When the download is complete, open the `.dmg` and run the installer.
 
 
