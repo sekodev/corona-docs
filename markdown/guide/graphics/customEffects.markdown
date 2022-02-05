@@ -1,6 +1,6 @@
 # Custom Shader Effects
 
-While Corona has an extensive list of [built-in shader effects][guide.graphics.effects], there are times when you may need to create custom effects. This guide outlines how to create custom effects using custom shader code, structured in the same way that Corona's <nobr>built-in</nobr> shader effects are implemented.
+While Solar2D has an extensive list of [built-in shader effects][guide.graphics.effects], there are times when you may need to create custom effects. This guide outlines how to create custom effects using custom shader code, structured in the same way that Solar2D's <nobr>built-in</nobr> shader effects are implemented.
 
 <div class="guides-toc">
 
@@ -12,6 +12,7 @@ While Corona has an extensive list of [built-in shader effects][guide.graphics.e
 * [Custom Varying Variables](#varyingvariables)
 * [Effect Parameters](#effectparameters)
 * [GLSL Conventions and Best Practices](#bestpractices)
+* [Precision Issues](#precisionissues)
 
 </div>
 
@@ -37,7 +38,7 @@ In OpenGL-ES 2.0, data flows from (__1__) the application to (__2__) the vertex 
 
 ![][images.sdk.graphics.GPU-pipeline]
 
-In Corona, rather than write complete shader programs, custom shader effects are exposed in the form of vertex and fragment __kernels__ which allow you to create powerful programmable effects.
+In Solar2D, rather than write complete shader programs, custom shader effects are exposed in the form of vertex and fragment __kernels__ which allow you to create powerful programmable effects.
 
 
 
@@ -46,7 +47,7 @@ In Corona, rather than write complete shader programs, custom shader effects are
 
 ## Programmable Effects
 
-Corona allows you to extend its pipeline to create several types of custom programmable effects, organized based on the number of input textures:
+Solar2D allows you to extend its pipeline to create several types of custom programmable effects, organized based on the number of input textures:
 
 * __Generators__ &mdash; Procedurally-generated effects which don't operate on any textures/images.
 * __Filters__ &mdash; Effects which operate on a single texture/image \([BitmapPaint][api.type.BitmapPaint]\).
@@ -72,7 +73,7 @@ A complete and detailed description of all properties is available in the [graph
 The name of an effect is determined by the following properties:
 
 * `category` &mdash; The type of effect.
-* `group` &mdash; The group of effect. If not provided, Corona will assume `custom`.
+* `group` &mdash; The group of effect. If not provided, Solar2D will assume `custom`.
 * `name` &mdash; The name within a given category.
 
 When you set an effect on a display object, you must provide a <nobr>fully-qualified</nobr> string by concatenating the above values and separating each by a `.` as follows:
@@ -85,9 +86,9 @@ local effectName = "[category].[group].[name]"
 
 ### Defining Kernels
 
-Corona packages snippets of shader code in the form of __kernels__. By structuring specific vertex and fragment processing tasks in kernels, the creation of custom effects is dramatically simplified.
+Solar2D packages snippets of shader code in the form of __kernels__. By structuring specific vertex and fragment processing tasks in kernels, the creation of custom effects is dramatically simplified.
 
-Essentially, a kernel is shader code which the main shader program relies upon to handle specific processing tasks. Corona supports both [vertex kernels](#vertexkernels) and [fragment kernels](#fragmentkernels). You must specify at least one kernel type in your effect (or&nbsp;both). If a vertex/fragment kernel is not specified, Corona inserts the default vertex/fragment kernel respectively.
+Essentially, a kernel is shader code which the main shader program relies upon to handle specific processing tasks. Solar2D supports both [vertex kernels](#vertexkernels) and [fragment kernels](#fragmentkernels). You must specify at least one kernel type in your effect (or&nbsp;both). If a vertex/fragment kernel is not specified, Solar2D inserts the default vertex/fragment kernel respectively.
 
 
 
@@ -98,7 +99,7 @@ Essentially, a kernel is shader code which the main shader program relies upon t
 
 Vertex kernels operate on a per-vertex basis, enabling you to modify vertex positions before they are used in the next stage of the pipeline. They must define the following function which accepts an incoming position and can modify that vertex position.
 
-Corona's default vertex kernel simply returns the incoming position:
+Solar2D's default vertex kernel simply returns the incoming position:
 
 `````lua
 P_POSITION vec2 VertexKernel( P_POSITION vec2 position )
@@ -118,7 +119,7 @@ The following time uniforms can be accessed by the vertex kernel:
 
 If you use these variables in your kernel's shader code, your kernel is implicitly <nobr>time-dependent</nobr>. In other words, your kernel will output different results and evolve as time progresses.
 
-When using these variables, you need to tell Corona that your shader requires the GPU to <nobr>re-render</nobr> the scene, even if there are no other changes to the display objects in the scene. You can do this by setting the `kernel.isTimeDependent` property in your kernel definition as indicated below. Note that you should only set this if your shader code is truly <nobr>time-dependent</nobr>, since it effectively forces the GPU to <nobr>re-render</nobr> every frame.
+When using these variables, you need to tell Solar2D that your shader requires the GPU to <nobr>re-render</nobr> the scene, even if there are no other changes to the display objects in the scene. You can do this by setting the `kernel.isTimeDependent` property in your kernel definition as indicated below. Note that you should only set this if your shader code is truly <nobr>time-dependent</nobr>, since it effectively forces the GPU to <nobr>re-render</nobr> every frame.
 
 `````lua
 kernel.isTimeDependent = true
@@ -130,7 +131,7 @@ kernel.isTimeDependent = true
 
 The following size uniforms can be accessed by the vertex kernel:
 
-* `P_POSITION vec2 CoronaContentScale` &mdash; The number of content pixels per screen pixels along the __x__ and __y__ axes. Content pixels refer to Corona's coordinate system and are determined by the [content scaling][guide.basics.configSettings] settings for your project.
+* `P_POSITION vec2 CoronaContentScale` &mdash; The number of content pixels per screen pixels along the __x__ and __y__ axes. Content pixels refer to Solar2D's coordinate system and are determined by the [content scaling][guide.basics.configSettings] settings for your project.
 
 * `P_UV vec4 CoronaTexelSize` &mdash; These values help you understand normalized texture pixels (texels) as they relate to actual pixels. This is useful because texture coordinates are normalized <nobr>(`0` to `1`)</nobr> and normally you only have information about proportion (the&nbsp;percentage of the width or height of the texture). Effectively, these values help you create effects based on actual screen/content pixel distances.
 
@@ -184,12 +185,12 @@ P_POSITION vec2 VertexKernel( P_POSITION vec2 position )
 
 Fragment kernels operate on a per-pixel basis, enabling you to modify each pixel <nobr>(i.e. image processing)</nobr> before it is drawn to the framebuffer. They must define the following function which accepts an incoming texture coordinate and returns a color vector, for example the pixel color to be used in the next stage of the pipeline.
 
-Corona's default fragment kernel simply samples a single texture (`CoronaSampler0`) and, using `CoronaColorScale()`, modulates it by the display object's alpha/tint:
+Solar2D's default fragment kernel simply samples a single texture (`CoronaSampler0`) and, using `CoronaColorScale()`, modulates it by the display object's alpha/tint:
 
 `````
 P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 {
-    P_COLOR texColor = texture2D( CoronaSampler0, texCoord );
+    P_COLOR vec4 texColor = texture2D( CoronaSampler0, texCoord );
     return CoronaColorScale( texColor );
 }
 `````
@@ -249,8 +250,38 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 ]]
 `````
 
+<a id="timetransforms"></a>
 
+## Time Transforms
 
+In the case of time-dependent vertex or fragment kernels, Solar2D will also look for `timeTransform`. If this exists, it must be a table with one of the following as its `func` member: `"modulo"`, `"pingpong"`, `"sine"`. The value of `CoronaTotalTime` within the shader will be the result of any such transformation, rather than the raw underlying time.
+
+The `"modulo"` transform is computed as `CoronaTotalTime = OriginalTotalTime % range`, where `range` is a positive number that may be supplied in the `timeTransform` table under that same key. By default, `range` is 1.
+
+The `"pingpong"` transform is similar, except `CoronaTotalTime` will first go from 0 to `range` (no default, in this case), then fall back to 0, and repeat indefinitely.
+
+The `"sine"` transform is computed as `CoronaTotalTime = amplitude * sin(scale * OriginalTotalTime + phase)`. Again, `amplitude` and `phase` may be provided in the `timeTransform` table, with defaults 1 and 0 respectively. The scale is calculated from a `period` parameter, a positive number indicating how much time should pass before the sine wave repeats. The default is 2 \* π, corresponding to a scale factor of 1.
+
+`````lua
+graphics.defineEffect{
+    category = "generator", group = "time", name = "pingpong",
+
+    isTimeDependent = true, timeTransform = { func = "pingpong", range = 5 },
+
+    fragment = [[
+        P_COLOR vec4 FragmentKernel (P_UV vec2 _)
+        {
+            return vec4(0., CoronaTotalTime / 5., 0., 1.);
+        }
+    ]]
+}
+
+local rect = display.newRect(300, 100, 50, 50)
+
+rect.fill.effect = "generator.time.pingpong"
+`````
+
+See the [precision issues](#precisionissues) below for the motivation behind these transforms.
 
 <a id="varyingvariables"></a>
 
@@ -258,7 +289,7 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 
 A "varying" variable enables data to be passed from a vertex shader to the fragment shader. The vertex shader outputs this value which corresponds to the positions of the primitive's vertices. In turn, the fragment shader linearly interpolates this value across the primitive during rasterization.
 
-In Corona, you can declare your own varying variables in the shader code. You should put them at the beginning of both your vertex and fragment code.
+In Solar2D, you can declare your own varying variables in the shader code. You should put them at the beginning of both your vertex and fragment code.
 
 ### Example
 
@@ -309,7 +340,7 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 	// Modulate by the display object's combined alpha/tint.
 	return CoronaColorScale( texColor );
 }
-
+]]
 `````
 
 
@@ -319,14 +350,14 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 
 ## Effect Parameters
 
-In Corona, you can pass effect parameters by setting appropriate properties on the [effect][api.type.Paint.effect] of a [ShapeObject][api.type.ShapeObject]. These properties depend on the effect. For example, the <nobr>built-in</nobr> brightness filter has an `intensity` parameter that can be propagated to the shader code:
+In Solar2D, you can pass effect parameters by setting appropriate properties on the [effect][api.type.Paint.effect] of a [ShapeObject][api.type.ShapeObject]. These properties depend on the effect. For example, the <nobr>built-in</nobr> brightness filter has an `intensity` parameter that can be propagated to the shader code:
 
 `````lua
 object.fill.effect = "filter.brightness"
 object.fill.effect.intensity = 0.4
 `````
 
-Corona supports two methods for adding parameters to custom shader effects. These are mutually exclusive, so you must choose one or the other.
+Solar2D supports two methods for adding parameters to custom shader effects. These are mutually exclusive, so you must choose one or the other.
 
 <div class="inner-table">
 
@@ -342,7 +373,7 @@ Method									Description
 
 On devices, OpenGL performs best when you are able to minimize state changes. This is because multiple objects can be batched into a single draw call if there are no state changes required between display objects.
 
-Typically, it's best to use vertex userdata when you need to pass in effect parameters, because the parameter data can be passed in a vertex array. This maximizes the chance that Corona can batch draw calls together. This is especially true if you have numerous consecutive display objects with the same effect applied.
+Typically, it's best to use vertex userdata when you need to pass in effect parameters, because the parameter data can be passed in a vertex array. This maximizes the chance that Solar2D can batch draw calls together. This is especially true if you have numerous consecutive display objects with the same effect applied.
 
 </div>
 
@@ -361,7 +392,7 @@ object.fill.effect = "filter.custom.myBrighten"
 object.fill.effect.brightness = 0.3
 `````
 
-To accomplish this, you must instruct Corona to map the parameter name in Lua with the corresponding component in the vector returned by `CoronaVertexUserData`. The following code tells Corona that the `"brightness"` parameter is the first component <nobr>(`index = 0`)</nobr> of the `CoronaVertexUserData` vector.
+To accomplish this, you must instruct Solar2D to map the parameter name in Lua with the corresponding component in the vector returned by `CoronaVertexUserData`. The following code tells Solar2D that the `"brightness"` parameter is the first component <nobr>(`index = 0`)</nobr> of the `CoronaVertexUserData` vector.
 
 `````lua
 kernel.vertexData =
@@ -410,27 +441,54 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 (forthcoming feature)
 
 
+<a id="vertextextures"></a>
 
+## Vertex Textures
+
+If the device supports it, you can also sample textures in the vertex kernel. On the Solar2D side, calling [system.getInfo("maxVertexTextureUnits")][api.library.system.getInfo] will give you the number of available samplers as the return value. This is also available in the vertex kernel as `gl_MaxVertexTextureImageUnits`.
+
+Any texture meant for use by vertex kernels should be created with both [sampling filters][api.library.display.setDefault] set to `"nearest"` and use level-of-detail (`Lod`) sampling. You can declare samplers in the vertex code manually as `uniform sampler2D NAME`, where `NAME` is some unused name of your choosing. (**TODO**: with more than one, the declaration order _probably_ maps to sampler order, but this needs confirmation)
+
+`````
+kernel.vertex =
+[[
+uniform sampler2D us_Vertices; // vertex sampler #1
+
+P_POSITION vec2 VertexKernel (P_POSITION vec2 pos)
+{
+    if (gl_MaxVertexTextureImageUnits > 0)
+    {
+        ...
+
+        P_COLOR vec4 verts = texture2DLod(us_Vertices, vec2(offset, 0.), 0.);
+        
+        ...
+    }
+    
+    else return vec4(0.);
+}
+]]
+`````
 
 <a id="bestpractices"></a>
 
 ## GLSL Conventions and Best Practices
 
-GLSL has many flavors across mobile and desktop. Corona assumes the use of GLSL&nbsp;ES <nobr>(OpenGL ES 2.0)</nobr>. To maximize compatibility and performance, you should follow the following conventions and best practices.
+GLSL has many flavors across mobile and desktop. Solar2D assumes the use of GLSL&nbsp;ES <nobr>(OpenGL ES 2.0)</nobr>. To maximize compatibility and performance, you should follow the following conventions and best practices.
 
-### Corona Simulator vs Device
+### Solar2D Simulator vs Device
 
 ###### Performance
 
-Shader performance on desktop GPUs will __not__ be the same as on devices. Therefore, if you run your shader under the Corona Simulator or in the [Corona Shader Playground](https://shader.coronalabs.com/), you should run it on actual devices to be sure that you are getting the desired performance. 
+Shader performance on desktop GPUs will __not__ be the same as on devices. Therefore, if you run your shader under the Solar2D Simulator or in the [Solar2D Shader Playground](https://shader.solar2d.com/), you should run it on actual devices to be sure that you are getting the desired performance. 
 
 Also note that if you are supporting devices from different manufacturers, the performance between them could vary significantly. On Android in particular, some <nobr>high-end</nobr> devices actually have underpowered GPUs, so you should __not__ assume that you will get equal performance across different <nobr>high-end</nobr> Android devices.
 
 ###### Syntax
 
-The Corona Simulator compiles your shader using __desktop__ GLSL. Consequently, if you run your shader in the Corona Simulator, your shader may still contain GLSL&nbsp;ES errors that will not appear until you attempt to run your shader on a device.
+The Solar2D Simulator compiles your shader using __desktop__ GLSL. Consequently, if you run your shader in the Solar2D Simulator, your shader may still contain GLSL&nbsp;ES errors that will not appear until you attempt to run your shader on a device.
 
-If you have a fragment-only kernel shader effect, you can test out your shader code in the [Corona Shader Playground](https://shader.coronalabs.com/). This playground verifies against GLSL&nbsp;ES in a <nobr>WebGL-enabled</nobr> browser.
+If you have a fragment-only kernel shader effect, you can test out your shader code in the [Solar2D Shader Playground](https://shader.solar2d.com/). This playground verifies against GLSL&nbsp;ES in a <nobr>WebGL-enabled</nobr> browser.
 
 ### Precision Qualifier Macros
 
@@ -445,7 +503,7 @@ Instead of using raw precision qualifiers like `lowp`, you should use one of the
 * `P_UV` &mdash; For texture coordinates; default is `mediump`.
 * `P_COLOR` &mdash; For pixel colors; default is `lowp`.
 
-We strongly recommend you use Corona's defaults for shader precision, all of which have been optimized to balance performance and fidelity. However, your project can override these settings in `config.lua` \([guide][guide.basics.configSettings]\).
+We strongly recommend you use Solar2D's defaults for shader precision, all of which have been optimized to balance performance and fidelity. However, your project can override these settings in `config.lua` \([guide][guide.basics.configSettings]\).
 
 ### High-Precision Devices
 
@@ -466,7 +524,7 @@ P_COLOR vec4 FragmentKernel( P_UV vec2 texCoord )
 
 ### Pre-Multiplied Alpha
 
-Corona provides textures with [pre-multiplied alpha](http://en.wikipedia.org/wiki/Alpha_compositing). Therefore, you may need to divide by the alpha to recover the original RGB values. However, for performance reasons, you should try to perform calculations to avoid the divide. Compare the following two kernels that brighten an image:
+Solar2D provides textures with [pre-multiplied alpha](https://en.wikipedia.org/wiki/Alpha_compositing). Therefore, you may need to divide by the alpha to recover the original RGB values. However, for performance reasons, you should try to perform calculations to avoid the divide. Compare the following two kernels that brighten an image:
 
 1. In the following, the original RGB values are recovered by undoing the <nobr>pre-multiplied</nobr> alpha, and later, the alpha is <nobr>re-applied</nobr>. This is not ideal because it generates a lot of additional operations on the GPU for every pixel.
 
@@ -559,3 +617,25 @@ In contrast, effects that have no dependent texture reads enable the GPU to <nob
 ### Avoid Branching and Loops
 
 Branching instructions (`if` conditions) are expensive. When possible, `for` loops should be unrolled or replaced by vector operations.
+
+<a id="precisionissues"></a>
+
+## Precision Issues
+
+Solar2D's shaders use [IEEE-754 floats](https://en.wikipedia.org/wiki/IEEE_754) as the underlying representation for numbers.
+
+In the majority of cases&mdash;the exceptions being irrelevant here&mdash;part of a floating-point number specifies an integer numerator. Let's call this `N`. Our numerator can go from `0` to `D - 1`, where `D` is a fixed power of 2. Together these give us a scale factor `t = N / D` in the range \[0, 1).
+
+The rest of the number is devoted to the sign (positive or negative) and an exponent, the latter being another integer that gives us a power of 2, for instance 2<sup>-3</sup> or 2<sup>5</sup>.
+
+We decode our numbers by interpolating between neighboring powers, with exponents `p` and `p + 1`, using the scale factor: `result = 2^p * (1 + t)`. Notice that, if `t` were 1, we would be on the **next** power of 2.
+
+This can exactly represent some values, but will only approximate most. Any format is going to have tradeoffs. IEEE-754 offers considerable accuracy near 0, as well as exact integers all the way up to `2 * D`.
+
+On the CPU side of things, Lua gives us 64-bit floats, with rather generous 52-bit numerators. On GPUs we are rarely so lucky, especially on mobile hardware, owing to concerns like bandwidth and memory.
+
+For instance, see the ["Qualifiers"](https://www.khronos.org/opengles/sdk/docs/reference_cards/OpenGL-ES-2_0-Reference-card.pdf) section in the OpenGL ES 2.0 reference card. With **mediump** our `D` is only guaranteed to be an underwhelming 1024.
+
+Now imagine what this means for time, measured in seconds. At first, we'll be totally fine. But just after the two-minute mark, interpolating between 128 and 256, we can only take steps of (256 - 128) / 1024, or 1/8th of a second. At five minutes we'll proceed in increments of 1/4, and so on. Anything relying on such results becomes quite choppy.
+
+This scenario is gloomier than it needs to be, however. The time is actually maintained in Solar2D as a single-precision float, with a respectable 23-bit numerator; the loss comes after it makes its way to the GPU. Furthermore, many shaders want transformed results, something like `TrueTotalTime % X` or `sin(N * TrueTotalTime)`, whose absolute values are likely to be in the more precise lower numeric ranges. Time transforms let us do some of the more common possibilities on the Solar2D side and pass the nicer results along.
