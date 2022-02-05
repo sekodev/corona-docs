@@ -9,8 +9,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>Corona Documentation — Plugins | Google Play Games Services</title>
-  <meta name="description" content="Corona lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
+  <title>Solar2D Documentation — Plugins | Google Play Games Services</title>
+  <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
   <link rel="stylesheet" href="../../css/style.css" type="text/css" />
   <link rel="stylesheet" href="../../css/shCoreDefault.css" type="text/css" />
 <script src="https://corona-cdn.coronalabs.com/js/docs.js"></script>
@@ -27,7 +27,7 @@
 <body>
 <div class="header"></div>
 <div class="title">
-	<span class="titleimg" onclick="window.location='https://coronalabs.com/'"></span>
+	<span class="titleimg" onclick="window.location='https://docs.coronalabs.com/'"></span>
 	<div id="nav">
 		<ul>
 <li><a href="../../guide/programming/index.html">Getting Started</a></li>
@@ -35,7 +35,8 @@
 <li><a href="../../api/index.html">API Reference</a></li>
 <li><a href="../../tutorial/index.html">Tutorials</a></li>
 <li><a href="../../plugin/index.html">Plugins</a></li>
-<li><a href="../../native/index.html">Corona Native</a></li>
+<li><a href="../../native/index.html">Solar2D Native</a></li>
+<li><a href="../../coronacards/index.html">CoronaCards</a></li>
 </ul>
 
 		<!--
@@ -68,7 +69,6 @@
 <li><a href="#gpgs.getsdkversionplugin.gpgs.getsdkversion"><a href="../../plugin/gpgs/getSdkVersion.html">gpgs.getSdkVersion()</a></a></li>
 <li><a href="#gpgs.setpopuppositionplugin.gpgs.setpopupposition"><a href="../../plugin/gpgs/setPopupPosition.html">gpgs.setPopupPosition()</a></a></li>
 <li><a href="#gpgs.loadgameplugin.gpgs.loadgame"><a href="../../plugin/gpgs/loadGame.html">gpgs.loadGame()</a></a></li>
-<li><a href="#gpgs.clearnotificationsplugin.gpgs.clearnotifications"><a href="../../plugin/gpgs/clearNotifications.html">gpgs.clearNotifications()</a></a></li>
 <li><a href="#gpgs.loadimageplugin.gpgs.loadimage"><a href="../../plugin/gpgs/loadImage.html">gpgs.loadImage()</a></a></li>
 <li><a href="#gpgs.showsettingsplugin.gpgs.showsettings"><a href="../../plugin/gpgs/showSettings.html">gpgs.showSettings()</a></a></li>
 <li><a href="#gpgs.enabledebugplugin.gpgs.enabledebug"><a href="../../plugin/gpgs/enableDebug.html">gpgs.enableDebug()</a></a></li>
@@ -82,10 +82,6 @@
 <li><a href="#gpgs.requestsplugin.gpgs.requests"><a href="../../plugin/gpgs/requests/index.html">gpgs.requests</a></a></li>
 <li><a href="#gpgs.snapshotsplugin.gpgs.snapshots"><a href="../../plugin/gpgs/snapshots/index.html">gpgs.snapshots</a></a></li>
 <li><a href="#gpgs.videosplugin.gpgs.videos"><a href="../../plugin/gpgs/videos/index.html">gpgs.videos</a></a></li>
-<li><a href="#gpgs.multiplayerplugin.gpgs.multiplayer"><a href="../../plugin/gpgs/multiplayer/index.html">gpgs.multiplayer</a></a></li>
-<li><a href="#gpgs.multiplayer.invitationsplugin.gpgs.multiplayer.invitations"><a href="../../plugin/gpgs/multiplayer/invitations/index.html">gpgs.multiplayer.invitations</a></a></li>
-<li><a href="#gpgs.multiplayer.realtimeplugin.gpgs.multiplayer.realtime"><a href="../../plugin/gpgs/multiplayer/realtime/index.html">gpgs.multiplayer.realtime</a></a></li>
-<li><a href="#gpgs.multiplayer.turnbasedplugin.gpgs.multiplayer.turnbased"><a href="../../plugin/gpgs/multiplayer/turnbased/index.html">gpgs.multiplayer.turnbased</a></a></li>
 </ul></li>
 <li><a href="#events">Events</a><ul>
 <li><a href="#initplugin.gpgs.event.init"><a href="../../plugin/gpgs/event/init/index.html">init</a></a></li>
@@ -114,11 +110,11 @@
 <tbody>
 <tr class="odd">
 <td align="left"><strong>Type</strong></td>
-<td align="left">[Library][api.type.library]</td>
+<td align="left"><a href="../../api/type/Library.html">Library</a></td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Revision</strong></td>
-<td align="left"><a href="https://coronalabs.com/links/docs/current-corona-sdk">Current Public Release (2018.3326)</a></td>
+<td align="left"><a href="https://solar2d.com/download/">Release 2021.3646</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Keywords</strong></td>
@@ -134,6 +130,16 @@
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>The <a href="https://marketplace.coronalabs.com/plugin/google-play-games-services">Google Play Games Services</a> plugin enables access to <nobr>Google Play Games Services</nobr> for game networking, including achievements, leaderboards, multiplayer, quests, videos, and more.</p>
+<div class="docs-tip-outer docs-tip-color-alert">
+<div class="docs-tip-inner-left">
+<div class="fa fa-exclamation-circle" style="font-size: 35px;">
+
+</div>
+</div>
+<div class="docs-tip-inner-right">
+<p>This documentation outlines the legacy Google Play Games Services plugin, primarily intended for Android games still using multiplayer. For new Android games, you should use <a href="../../plugin/gpgs2/index.html">Google Play Games Services v2</a> plugin.</p>
+</div>
+</div>
 <div class="guide-notebox-imp">
 <div class="notebox-title-imp">
 Important
@@ -196,9 +202,6 @@ Important
 <div id="gpgs.loadgameplugin.gpgs.loadgame" class="section level4">
 <h4><a href="../../plugin/gpgs/loadGame.html">gpgs.loadGame()</a></h4>
 </div>
-<div id="gpgs.clearnotificationsplugin.gpgs.clearnotifications" class="section level4">
-<h4><a href="../../plugin/gpgs/clearNotifications.html">gpgs.clearNotifications()</a></h4>
-</div>
 <div id="gpgs.loadimageplugin.gpgs.loadimage" class="section level4">
 <h4><a href="../../plugin/gpgs/loadImage.html">gpgs.loadImage()</a></h4>
 </div>
@@ -235,18 +238,6 @@ Important
 </div>
 <div id="gpgs.videosplugin.gpgs.videos" class="section level4">
 <h4><a href="../../plugin/gpgs/videos/index.html">gpgs.videos</a></h4>
-</div>
-<div id="gpgs.multiplayerplugin.gpgs.multiplayer" class="section level4">
-<h4><a href="../../plugin/gpgs/multiplayer/index.html">gpgs.multiplayer</a></h4>
-</div>
-<div id="gpgs.multiplayer.invitationsplugin.gpgs.multiplayer.invitations" class="section level4">
-<h4><a href="../../plugin/gpgs/multiplayer/invitations/index.html">gpgs.multiplayer.invitations</a></h4>
-</div>
-<div id="gpgs.multiplayer.realtimeplugin.gpgs.multiplayer.realtime" class="section level4">
-<h4><a href="../../plugin/gpgs/multiplayer/realtime/index.html">gpgs.multiplayer.realtime</a></h4>
-</div>
-<div id="gpgs.multiplayer.turnbasedplugin.gpgs.multiplayer.turnbased" class="section level4">
-<h4><a href="../../plugin/gpgs/multiplayer/turnbased/index.html">gpgs.multiplayer.turnbased</a></h4>
 </div>
 </div>
 <div id="events" class="section level2">
@@ -308,12 +299,12 @@ Important
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2020 Corona Labs Inc. All Rights Reserved.
+© 2021 Solar2D All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.
 </p>
-<p><a class="feedback-button" href="https://coronalabs.com/corona-docs-feedback-form/?page=plugin.gpgs.index&Current+Public+Release+%282018%2E3326%29" target="_blank">Report an Issue</a></p>
+<p><a class="feedback-button" href="https://github.com/coronalabs/corona-docs/issues" target="_blank">Report an Issue</a></p>
 </div>
 </div>
 </div>
