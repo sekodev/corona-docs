@@ -27,7 +27,7 @@
 <body>
 <div class="header"></div>
 <div class="title">
-	<span class="titleimg" onclick="window.location='https://coronalabs.com/'"></span>
+	<span class="titleimg" onclick="window.location='https://docs.coronalabs.com/'"></span>
 	<div id="nav">
 		<ul>
 <li><a href="../../../guide/programming/index.html">Getting Started</a></li>
@@ -36,6 +36,7 @@
 <li><a href="../../../tutorial/index.html">Tutorials</a></li>
 <li><a href="../../../plugin/index.html">Plugins</a></li>
 <li><a href="../../../native/index.html">Solar2D Native</a></li>
+<li><a href="../../../coronacards/index.html">CoronaCards</a></li>
 </ul>
 
 		<!--
@@ -157,6 +158,10 @@ Runtime:addEventListener( "inputDeviceStatus", onInputDeviceStatusChanged )</pre
 <p>The following example shows how to detect a specific controller. When either an <code>axis</code> or <code>key</code> event is triggered, the <code>setDevice()</code> function is called which sets the <code>event.device</code> and <a href="../../../api/type/InputDevice/index.html">InputDevice</a> <code>displayName</code>.</p>
 <pre class="brush: lua;">local controller = { device="", displayName="" }
 
+--Predeclare
+local onKeyEvent
+local onAxisEvent
+
 local function setDevice( device, displayName )
 
     -- Set current controller
@@ -168,11 +173,11 @@ local function setDevice( device, displayName )
     Runtime:removeEventListener( "key", onKeyEvent )
 end
 
-local function onKeyEvent( event )
+function onKeyEvent( event )
     setDevice( event.device, event.device.displayName )
 end
 
-local function onAxisEvent( event )
+function onAxisEvent( event )
     if ( math.abs(event.normalizedValue) > 0.5 ) then
         setDevice( event.device, event.device.displayName )
     end
@@ -263,7 +268,7 @@ Important
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2020 Solar2D All Rights Reserved.
+© 2021 Solar2D All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.
