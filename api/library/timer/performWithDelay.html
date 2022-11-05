@@ -93,7 +93,7 @@
 </tr>
 <tr class="even">
 <td align="left"><strong>Revision</strong></td>
-<td align="left"><a href="https://github.com/coronalabs/corona/releases">Release 2020.3601</a></td>
+<td align="left"><a href="https://github.com/coronalabs/corona/releases">Current Release (2020.3601)</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Keywords</strong></td>
@@ -120,8 +120,7 @@
 </div>
 <div id="gotchas" class="section level2">
 <h2>Gotchas</h2>
-<p>Timers will be automatically paused when the application is suspended and resume when the application is resumed. However, to avoid unwanted behaviours, it is strongly advised to handle your timers <strong>manually</strong>. Thus, if you have running timers that are not paused and resumed (in code) upon suspension of the app, you should handle this task by calling <a href="../../../api/library/timer/pause.html">timer.pause()</a> and <a href="../../../api/library/timer/resume.html">timer.resume()</a> on all applicable timers.</p>
-<p>Timers will <strong>not</strong> be automatically cancelled when changing a scene. Thus, if you have running timers that are not cancelled, you must handle this <strong>manually</strong> by calling <a href="../../../api/library/timer/cancel.html">timer.cancel()</a> on all applicable timers.</p>
+<p>Timers run on system time. If the app is suspended, running timers will <strong>not</strong> be automatically paused, meaning that when the app is resumed, all timers that would have completed/triggered during the suspended period will trigger immediately. Thus, if you have running timers that are not paused (in code) upon suspension of the app, you should handle this task by calling <a href="../../../api/library/timer/pause.html">timer.pause()</a> on all applicable timers.</p>
 </div>
 <div id="syntax" class="section level2">
 <h2>Syntax</h2>
