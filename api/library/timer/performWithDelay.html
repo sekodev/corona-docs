@@ -36,7 +36,6 @@
 <li><a href="../../../tutorial/index.html">Tutorials</a></li>
 <li><a href="../../../plugin/index.html">Plugins</a></li>
 <li><a href="../../../native/index.html">Solar2D Native</a></li>
-<li><a href="../../../coronacards/index.html">CoronaCards</a></li>
 </ul>
 
 		<!--
@@ -62,7 +61,6 @@
 <li><a href="#delay-required">delay <sub><sup>(required)</sup></sub></a></li>
 <li><a href="#listener-required">listener <sub><sup>(required)</sup></sub></a></li>
 <li><a href="#iterations-optional">iterations <sub><sup>(optional)</sup></sub></a></li>
-<li><a href="#tag-optional">tag <sub><sup>(optional)</sup></sub></a></li>
 </ul></li>
 <li><a href="#examples">Examples</a><ul>
 <li><a href="#function-listener">Function Listener</a></li>
@@ -70,7 +68,6 @@
 <li><a href="#passing-parameters-1">Passing Parameters (1)</a></li>
 <li><a href="#passing-parameters-2">Passing Parameters (2)</a></li>
 </ul></li>
-<li><a href="#extras">Extras</a></li>
 </ul></li>
 </ul>
 </div>
@@ -96,7 +93,7 @@
 </tr>
 <tr class="even">
 <td align="left"><strong>Revision</strong></td>
-<td align="left"><a href="https://solar2d.com/download/">Release 2022.3682</a></td>
+<td align="left"><a href="https://github.com/coronalabs/corona/releases">Release 2020.3601</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Keywords</strong></td>
@@ -128,7 +125,7 @@
 </div>
 <div id="syntax" class="section level2">
 <h2>Syntax</h2>
-<pre class="brush: lua;">timer.performWithDelay( delay, listener [, iterations] [, tag] )</pre>
+<pre class="brush: lua;">timer.performWithDelay( delay, listener [, iterations] )</pre>
 <div id="delay-required" class="section level5">
 <h5>delay <sub><sup>(required)</sup></sub></h5>
 <p><em><a href="../../../api/type/Number.html">Number</a>.</em> The delay in milliseconds, for example, <code>1000</code> = 1 second. Note that timers cannot execute faster than the runtime framerate of the app. For example, if the framerate of the app is <code>60</code> frames per second, as defined in the <code>config.lua</code> file (<a href="../../../guide/basics/configSettings/index.html">guide</a>), the shortest delay for a timer is approximately <code>16.667</code> milliseconds <nobr>(<code>1000</code>/<code>60</code> = ~<code>16.667</code>)</nobr>.</p>
@@ -139,11 +136,7 @@
 </div>
 <div id="iterations-optional" class="section level5">
 <h5>iterations <sub><sup>(optional)</sup></sub></h5>
-<p><em><a href="../../../api/type/Number.html">Number</a>.</em> Optionally specify the number of times <code>listener</code> is to be invoked. By default, it is <code>1</code>; pass <code>0</code> or <code>-1</code> if you want the timer to loop forever.</p>
-</div>
-<div id="tag-optional" class="section level5">
-<h5>tag <sub><sup>(optional)</sup></sub></h5>
-<p><em><a href="../../../api/type/String.html">String</a>.</em> Optionally assign a <code>tag</code> to the timer. You can pause, resume or cancel all timers that share the same <code>tag</code> with a single function call. Note: Using <code>tag</code> requires <code>Solar2D 2020.3611</code> or a newer build.</p>
+<p><em><a href="../../../api/type/Number.html">Number</a>.</em> Optionally specifies the number of times <code>listener</code> is to be invoked. By default, it is <code>1</code>; pass <code>0</code> or <code>-1</code> if you want the timer to loop forever.</p>
 </div>
 </div>
 <div id="examples" class="section level2">
@@ -196,23 +189,16 @@ end
 local tm = timer.performWithDelay( 1000, onTimer )
 -- Assign a table of parameters to the "tm" handle
 tm.params = { myParam1 = "Parameter1", myParam2 = "Parameter2" }</pre>
-</div>
-</div>
-<div id="extras" class="section level2">
-<h2>Extras</h2>
-<ul>
-<li><a href="https://github.com/coronalabs/framework-timer">Source code</a></li>
-</ul>
-<p>If you want to add new functionality or modify existing ones, you can download or fork the source code from GitHub and include in your project(See <a href="../../../tutorial/basics/externalModules/index.html">Using External Modules</a>).</p>
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2021 Solar2D All Rights Reserved.
+© 2020 Solar2D All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.
 </p>
 <p><a class="feedback-button" href="https://github.com/coronalabs/corona-docs/issues" target="_blank">Report an Issue</a></p>
+</div>
 </div>
 </div>
 </div>

@@ -36,7 +36,6 @@
 <li><a href="../../../tutorial/index.html">Tutorials</a></li>
 <li><a href="../../../plugin/index.html">Plugins</a></li>
 <li><a href="../../../native/index.html">Solar2D Native</a></li>
-<li><a href="../../../coronacards/index.html">CoronaCards</a></li>
 </ul>
 
 		<!--
@@ -97,7 +96,7 @@
 </tr>
 <tr class="even">
 <td align="left"><strong>Revision</strong></td>
-<td align="left"><a href="https://solar2d.com/download/">Release 2022.3682</a></td>
+<td align="left"><a href="https://github.com/coronalabs/corona/releases">Release 2020.3601</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Keywords</strong></td>
@@ -129,7 +128,7 @@
 <div id="gotchas" class="section level2">
 <h2>Gotchas</h2>
 <ul>
-<li><p>You cannot execute a network request during an <code>applicationSuspend</code> or <code>applicationExit</code> <a href="../../../api/event/system/type.html">event</a>. When your application suspends, no callbacks will fire. You can work around this by saving the request you wish to make to a file upon suspension. Then, on an <code>applicationResume</code> <a href="../../../api/event/system/type.html">event</a>, check if there is a pending request saved and, if so, execute it.</p></li>
+<li><p>You cannot execute a network request during an <code>applicationSuspend</code> or <code>applicationExit</code> <a href="../../../api/event/system/type.html">event</a>. After Corona suspends, no callbacks will fire. You can work around this by saving the request you wish to make to a file upon suspension. Then, on an <code>applicationResume</code> <a href="../../../api/event/system/type.html">event</a>, check if there is a pending request saved and, if so, execute it.</p></li>
 <li><p>The <code>Content-Type</code> of requests defaults to <code>text/plain</code>. If you're <code>POST</code>-ing form data, you must set it appropriately <nobr>(see the <a href="#HTTP_POST_with_custom_headers">example</a> below).</nobr></p></li>
 <li><p>Cookies may not be handled in the same way on all devices. For example, some Android devices will require app code to handle certain web login schemes correctly, especially if they use redirects.</p></li>
 <li><p>Network requests do not raise runtime errors in the event of failure so there is no need to wrap them in a Lua <code>pcall()</code> statement (errors are reported in the event sent to the network listener).</p></li>
@@ -193,7 +192,7 @@
 <h5>HTTPS/SSL</h5>
 <pre class="brush: lua;">-- The following sample code contacts Google's encrypted search over SSL
 -- and prints the response (in this case, the HTML source of the home page)
--- to the console.
+-- to the Corona terminal.
 
 local function networkListener( event )
 
@@ -269,11 +268,11 @@ params.progress = "download"
 
 -- Tell network.request() that we want the output to go to a file:
 params.response = {
-    filename = "solar.jpg",
+    filename = "corona.jpg",
     baseDirectory = system.DocumentsDirectory
 }
  
-network.request( "https://docs.coronalabs.com/images/simulator/image-mask-base2.png", "GET", networkListener,  params )</pre>
+network.request( "http://docs.coronalabs.com/images/simulator/image-mask-base2.png", "GET", networkListener,  params )</pre>
 </div>
 <div id="upload-text-file" class="section level5">
 <h5>Upload Text File</h5>
@@ -313,7 +312,7 @@ network.request( "http://127.0.0.1/restapi.php", "POST", networkListener, params
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2021 Solar2D All Rights Reserved.
+© 2020 Solar2D All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.
