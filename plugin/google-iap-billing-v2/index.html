@@ -70,6 +70,7 @@
 <li><a href="#store.purchasesubscriptionplugin.google-iap-billing-v2.purchasesubscription"><a href="../../plugin/google-iap-billing-v2/purchaseSubscription.html">store.purchaseSubscription()</a></a></li>
 <li><a href="#store.restoreplugin.google-iap-billing-v2.restore"><a href="../../plugin/google-iap-billing-v2/restore.html">store.restore()</a></a></li>
 <li><a href="#store.consumepurchaseplugin.google-iap-billing-v2.consumepurchase"><a href="../../plugin/google-iap-billing-v2/consumePurchase.html">store.consumePurchase()</a></a></li>
+<li><a href="#store.finishtransactionplugin.google-iap-billing-v2.finishtransaction"><a href="../../plugin/google-iap-billing-v2/finishTransaction.html">store.finishTransaction()</a></a></li>
 </ul></li>
 <li><a href="#events">Events</a><ul>
 <li><a href="#initplugin.google-iap-billing-v2.event.init"><a href="../../plugin/google-iap-billing-v2/event/init/index.html">init</a></a></li>
@@ -110,13 +111,13 @@
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>The <a href="https://plugins.solar2d.com/?search=plugin.google.iap.billing.v2">Google IAP</a> plugin allows you to support <nobr>in-app</nobr> purchasing on Android, including <nobr>in-game</nobr> currency, upgrades, and more.</p>
-<p>For in-app purchasing on other platforms, see the documentation for <a href="../../api/library/store/index.html">Apple IAP</a> or <a href="../../plugin/amazon-iap-v3/index.html">Amazon IAP</a>.</p>
+<p>For in-app purchasing on other platforms, see the documentation for <a href="../../api/library/store/index.html">Apple IAP</a>, <a href="../../plugin/samsung-iap/index.html">Samsung IAP</a> or <a href="../../plugin/amazon-iap-v3/index.html">Amazon IAP</a>.</p>
 <div class="guide-notebox">
 <div class="notebox-title">
 Notes
 </div>
 <ul>
-<li><p>The only code change between Google API Billing v2 and <a href="../../plugin/google-iap-billing/index.html">Billing v1</a> is removal <a href="../../plugin/google-iap-billing-v2/event/productList/products.html">event.productList.products.originalJson</a> and new publisherId in <code>build.settings</code></p></li>
+<li><p>The only code change between Google API Billing v2 and <a href="../../plugin/google-iap-billing/index.html">Billing v1</a> is changing to a publisherId in <code>build.settings</code></p></li>
 <li><p>To use Google IAP, begin by setting up your <a href="https://support.google.com/wallet/business/answer/1619772">Google Payments Merchant Center</a> account and linking it to the <a href="https://play.google.com/apps/publish">Google Play Developer Console</a>.</p></li>
 <li><p>Additional configuration must occur within the <a href="https://play.google.com/apps/publish">Google Play Developer Console</a>. If you need assistance with this process, please see Google's <a href="https://developer.android.com/google/play/billing/index.html">documentation</a>.</p></li>
 </ul>
@@ -129,7 +130,7 @@ Compatibility with IAPv3
 <ul>
 <li><p><a href="../../plugin/google-iap-billing-v2/event/storeTransaction/transaction.html">storeTransaction.transaction</a> would not have data about purchase when error occurs.</p></li>
 <li><p><a href="../../plugin/google-iap-billing-v2/event/storeTransaction/transaction.html">storeTransaction.transaction</a> event have additional values of <code>state</code> field.</p></li>
-<li><p><a href="../../plugin/google-iap-billing-v2/event/storeTransaction/transaction.html">store.finishTransaction</a> function is no longer no-op. It will acknowledge the purchase. If purchase is not acknowledged or consumed over three days it would be <a href="https://developer.android.com/google/play/billing/integrate#process">refunded</a> to user.</p></li>
+<li><p><a href="../../plugin/google-iap-billing-v2/finishTransaction.html">store.finishTransaction</a> function is no longer no-op. It will acknowledge the purchase. If purchase is not acknowledged or consumed over three days it would be <a href="https://developer.android.com/google/play/billing/integrate#process">refunded</a> to user.</p></li>
 </ul>
 </div>
 <!---
@@ -180,6 +181,9 @@ When building an app using the Google&nbsp;IAP plugin, ensure that the following
 </div>
 <div id="store.consumepurchaseplugin.google-iap-billing-v2.consumepurchase" class="section level4">
 <h4><a href="../../plugin/google-iap-billing-v2/consumePurchase.html">store.consumePurchase()</a></h4>
+</div>
+<div id="store.finishtransactionplugin.google-iap-billing-v2.finishtransaction" class="section level4">
+<h4><a href="../../plugin/google-iap-billing-v2/finishTransaction.html">store.finishTransaction()</a></h4>
 </div>
 </div>
 <div id="events" class="section level2">
