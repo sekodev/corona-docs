@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>Solar2D Documentation — Plugins | Pasteboard</title>
+  <title>Solar2D Documentation — Plugins | AdMob | updateConsentForm</title>
   <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
   <link rel="stylesheet" href="../../css/style.css" type="text/css" />
   <link rel="stylesheet" href="../../css/shCoreDefault.css" type="text/css" />
@@ -55,114 +55,89 @@
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#pasteboard.">pasteboard.*</a><ul>
+<li><a href="#admob.updateconsentform">admob.updateConsentForm()</a><ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#syntax">Syntax</a></li>
-<li><a href="#functions">Functions</a><ul>
-<li><a href="#pasteboard.clearplugin.pasteboard.clear"><a href="../../plugin/pasteboard/clear.html">pasteboard.clear()</a></a></li>
-<li><a href="#pasteboard.copyplugin.pasteboard.copy"><a href="../../plugin/pasteboard/copy.html">pasteboard.copy()</a></a></li>
-<li><a href="#pasteboard.gettypeplugin.pasteboard.gettype"><a href="../../plugin/pasteboard/getType.html">pasteboard.getType()</a></a></li>
-<li><a href="#pasteboard.pasteplugin.pasteboard.paste"><a href="../../plugin/pasteboard/paste.html">pasteboard.paste()</a></a></li>
-<li><a href="#pasteboard.setallowedtypesplugin.pasteboard.setallowedtypes"><a href="../../plugin/pasteboard/setAllowedTypes.html">pasteboard.setAllowedTypes()</a></a></li>
+<li><a href="#syntax">Syntax</a><ul>
+<li><a href="#options-optional">options <sub><sup>(optional)</sup></sub></a></li>
 </ul></li>
-<li><a href="#project-settings">Project Settings</a></li>
-<li><a href="#support">Support</a></li>
-<li><a href="#sample-project">Sample project</a></li>
-<li><a href="#source-code">Source code</a></li>
+<li><a href="#parameter-reference">Parameter Reference</a><ul>
+<li><a href="#underage-optional">underage <sub><sup>(optional)</sup></sub></a></li>
+<li><a href="#debug-optional">debug <sub><sup>(optional)</sup></sub></a></li>
+</ul></li>
+<li><a href="#example">Example</a></li>
 </ul></li>
 </ul>
 </div>
 <div id="breadcrumb">
-<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../plugin/index.html">Plugins</a>  ▸  <a href="../../plugin/pasteboard/index.html">Pasteboard</a>
+<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../plugin/index.html">Plugins</a>  ▸  <a href="../../plugin/admob/index.html">AdMob</a>  ▸  <a href="../../plugin/admob/updateConsentForm.html">updateConsentForm</a>
 </div>
-<div id="pasteboard." class="section level1">
-<h1>pasteboard.*</h1>
+<div id="admob.updateconsentform" class="section level1">
+<h1>admob.updateConsentForm()</h1>
 <blockquote>
 <table>
 <tbody>
 <tr class="odd">
 <td align="left"><strong>Type</strong></td>
-<td align="left"><a href="../../api/type/Library.html">Library</a></td>
+<td align="left"><a href="../../api/type/Function.html">Function</a></td>
 </tr>
 <tr class="even">
+<td align="left"><strong>Return value</strong></td>
+<td align="left">none</td>
+</tr>
+<tr class="odd">
 <td align="left"><strong>Revision</strong></td>
 <td align="left"><a href="https://solar2d.com/download/">Release 2023.3686</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><strong>Keywords</strong></td>
-<td align="left">pasteboard, clipboard, copy, paste</td>
+<td align="left">ads, advertising, AdMob, hide</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>See also</strong></td>
+<td align="left"><a href="../../plugin/admob/loadConsentForm.html">admob.loadConsentForm()</a></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>Platforms</strong></td>
-<td align="left">Android, iOS</td>
+<td align="left"></td>
+<td align="left"><a href="../../plugin/admob/index.html">admob.*</a></td>
 </tr>
 </tbody>
 </table>
 </blockquote>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>The Pasteboard plugin enables you to copy/paste from/to the device's pasteboard.</p>
+<p>This function updates Consent Manager with information that helps determine if a message needs to be displayed.</p>
 </div>
 <div id="syntax" class="section level2">
 <h2>Syntax</h2>
-<pre class="brush: lua;">local pasteboard = require( "plugin.pasteboard" )</pre>
-</div>
-<div id="functions" class="section level2">
-<h2>Functions</h2>
-<div id="pasteboard.clearplugin.pasteboard.clear" class="section level4">
-<h4><a href="../../plugin/pasteboard/clear.html">pasteboard.clear()</a></h4>
-</div>
-<div id="pasteboard.copyplugin.pasteboard.copy" class="section level4">
-<h4><a href="../../plugin/pasteboard/copy.html">pasteboard.copy()</a></h4>
-</div>
-<div id="pasteboard.gettypeplugin.pasteboard.gettype" class="section level4">
-<h4><a href="../../plugin/pasteboard/getType.html">pasteboard.getType()</a></h4>
-</div>
-<div id="pasteboard.pasteplugin.pasteboard.paste" class="section level4">
-<h4><a href="../../plugin/pasteboard/paste.html">pasteboard.paste()</a></h4>
-</div>
-<div id="pasteboard.setallowedtypesplugin.pasteboard.setallowedtypes" class="section level4">
-<h4><a href="../../plugin/pasteboard/setAllowedTypes.html">pasteboard.setAllowedTypes()</a></h4>
+<pre class="brush: lua;">admob.updateConsentForm( [options] )</pre>
+<div id="options-optional" class="section level5">
+<h5>options <sub><sup>(optional)</sup></sub></h5>
+<p><em><a href="../../api/type/Table.html">Table</a>.</em> Table containing additional parameters for the specified ad type — see the next section for details.</p>
 </div>
 </div>
-<div id="project-settings" class="section level2">
-<h2>Project Settings</h2>
-<p>To use this plugin, add an entry into the <code>plugins</code> table of <code>build.settings</code>. When added, the build server will integrate the plugin during the build phase.</p>
-<pre class="brush: lua;">settings =
-{
-    plugins =
-    {
-        ["plugin.pasteboard"] =
-        {
-            publisherId = "com.coronalabs",
-        },
-    },
-}</pre>
-<!---
+<div id="parameter-reference" class="section level2">
+<h2>Parameter Reference</h2>
+<p>The <code>options</code> table includes parameters</p>
+<div id="underage-optional" class="section level5">
+<h5>underage <sub><sup>(optional)</sup></sub></h5>
+<p><a href="../../api/type/Boolean.html">boolean</a>, set tag for under the age of consent. True means users are underage.</p>
+</div>
+<div id="debug-optional" class="section level5">
+<h5>debug <sub><sup>(optional)</sup></sub></h5>
+<p><a href="../../api/type/Table.html">Table</a>, accepts <code>geography</code> and <code>testDeviceIdentifiers</code> fields. The <code>geography</code> valid types are <code>&quot;EEA&quot;</code>, <code>&quot;notEEA&quot;</code>, <code>&quot;disabled&quot;</code>. The <code>testDeviceIdentifiers</code> takes an <a href="../../api/type/Array.html">Array</a> of <a href="../../api/type/String.html">Strings</a> of the Test Devices Hash Id.</p>
+</div>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<pre class="brush: lua;">local admob = require( "plugin.admob" )
 
-## Sample Code
+local function adListener( event )
 
-[https://github.com/coronalabs/plugins-sample-pasteboard/](https://github.com/coronalabs/plugins-sample-pasteboard)
+end
+-- Initialize the AdMob plugin
+admob.init( adListener, { appId="YOUR_ADMOB_APP_ID" } )
 
--->
-</div>
-<div id="support" class="section level2">
-<h2>Support</h2>
-<ul>
-<li><a href="https://forums.solar2d.com/c/corona-marketplace/corona-premium-plugins/92">Forums</a></li>
-</ul>
-</div>
-<div id="sample-project" class="section level2">
-<h2>Sample project</h2>
-<ul>
-<li><a href="https://github.com/coronalabs/com.coronalabs-plugin.pasteboard/tree/master/src/Corona">View on GitHub</a></li>
-</ul>
-</div>
-<div id="source-code" class="section level2">
-<h2>Source code</h2>
-<ul>
-<li><a href="https://github.com/coronalabs/com.coronalabs-plugin.pasteboard/">View on GitHub</a></li>
-</ul>
+admob.updateConsentForm({ underage=true, debug={ geography = "EEA", testDeviceIdentifiers={"Your-Device-Hash"} } })</pre>
 <hr>
 <div id="footer">
 <p class="copyright">
