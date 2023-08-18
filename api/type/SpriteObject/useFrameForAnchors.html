@@ -9,10 +9,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>Solar2D Documentation — Plugins | Social Popup</title>
+  <title>Solar2D Documentation — API Reference | type | SpriteObject | useFrameForAnchors</title>
   <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/shCoreDefault.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/shCoreDefault.css" type="text/css" />
 <script src="https://corona-cdn.coronalabs.com/js/docs.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -30,13 +30,13 @@
 	<span class="titleimg" onclick="window.location='https://docs.coronalabs.com/'"></span>
 	<div id="nav">
 		<ul>
-<li><a href="../../guide/programming/index.html">Getting Started</a></li>
-<li><a href="../../guide/index.html">Guides</a></li>
-<li><a href="../../api/index.html">API Reference</a></li>
-<li><a href="../../tutorial/index.html">Tutorials</a></li>
-<li><a href="../../plugin/index.html">Plugins</a></li>
-<li><a href="../../native/index.html">Solar2D Native</a></li>
-<li><a href="../../coronacards/index.html">CoronaCards</a></li>
+<li><a href="../../../guide/programming/index.html">Getting Started</a></li>
+<li><a href="../../../guide/index.html">Guides</a></li>
+<li><a href="../../../api/index.html">API Reference</a></li>
+<li><a href="../../../tutorial/index.html">Tutorials</a></li>
+<li><a href="../../../plugin/index.html">Plugins</a></li>
+<li><a href="../../../native/index.html">Solar2D Native</a></li>
+<li><a href="../../../coronacards/index.html">CoronaCards</a></li>
 </ul>
 
 		<!--
@@ -55,79 +55,63 @@
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#social-popup">Social Popup</a><ul>
+<li><a href="#objectuseframeforanchors">object:useFrameForAnchors()</a><ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#functions">Functions</a><ul>
-<li><a href="#native.showpopupplugin.coronaprovider_native_popup_social.showpopup"><a href="../../plugin/CoronaProvider_native_popup_social/showPopup.html">native.showPopup()</a></a></li>
-<li><a href="#native.canshowpopupplugin.coronaprovider_native_popup_social.canshowpopup"><a href="../../plugin/CoronaProvider_native_popup_social/canShowPopup.html">native.canShowPopup()</a></a></li>
+<li><a href="#syntax">Syntax</a><ul>
+<li><a href="#frameindex-optional">frameIndex <sub><sup>(optional)</sup></sub></a></li>
 </ul></li>
-<li><a href="#project-settings">Project Settings</a></li>
 </ul></li>
 </ul>
 </div>
 <div id="breadcrumb">
-<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../plugin/index.html">Plugins</a>  ▸  <a href="../../plugin/CoronaProvider_native_popup_social/index.html">Social Popup</a>
+<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../../api/index.html">API Reference</a>  ▸  <a href="../../../api/type/index.html">type</a>  ▸  <a href="../../../api/type/SpriteObject/index.html">SpriteObject</a>  ▸  <a href="../../../api/type/SpriteObject/useFrameForAnchors.html">useFrameForAnchors</a>
 </div>
-<div id="social-popup" class="section level1">
-<h1>Social Popup</h1>
+<div id="objectuseframeforanchors" class="section level1">
+<h1>object:useFrameForAnchors()</h1>
 <blockquote>
 <table>
 <tbody>
 <tr class="odd">
-<td align="left"><strong>Type</strong></td>
-<td align="left"><a href="../../api/type/CoronaProvider/index.html">CoronaProvider</a></td>
+<td><strong>Type</strong> [Function][ap</td>
+<td align="left">i.type.Function]</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>Revision</strong></td>
-<td align="left"><a href="https://solar2d.com/download/">Release 2023.3686</a></td>
+<td><strong>Object</strong> [SpriteObje</td>
+<td align="left">ct]<a href="../../../api/type/SpriteObject/index.html">api.type.SpriteObject</a></td>
 </tr>
 <tr class="odd">
-<td align="left"><strong>Keywords</strong></td>
-<td align="left">native, showPopup, social</td>
+<td><strong>Library</strong> [display.*</td>
+<td align="left">]<a href="../../../api/library/display/index.html">api.library.display</a></td>
 </tr>
 <tr class="even">
-<td align="left"><strong>Platforms</strong></td>
-<td align="left">Android</td>
+<td><strong>Return value</strong> none</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td><strong>Revision</strong> [Release</td>
+<td align="left">2023.3686](https://solar2d.com/download/)</td>
+</tr>
+<tr class="even">
+<td><strong>Keywords</strong> sprite, u</td>
+<td align="left">seFrameForAnchors, anchor</td>
+</tr>
+<tr class="odd">
+<td><strong>See also</strong> [display.</td>
+<td align="left">newSprite()]<a href="../../../api/library/display/newSprite.html">api.library.display.newSprite</a></td>
 </tr>
 </tbody>
 </table>
 </blockquote>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>The Social Popup plugin enables you to post a message to various social providers.</p>
-<div class="docs-tip-outer docs-tip-color-alert" style="width: 100%;">
-<div class="docs-tip-inner-left">
-<div class="fa fa-exclamation-circle" style="font-size: 35px;">
-
+<p>Sets a frame in the currently loaded sequence as the reference for anchor points. Anchor point calculations will be performed as if this was the current frame, even when another is actually being displayed. Without this, sequences with variable-sized frames (possibly with trimming) can jump around during scaling and rotation, due to the anchor point resolving to a different position.</p>
 </div>
-</div>
-<div class="docs-tip-inner-right">
-<p>For iOS 8 and later, you have to use <a href="../../plugin/CoronaProvider_native_popup_activity/index.html">Activity Popup</a> plugin.</p>
-</div>
-</div>
-</div>
-<div id="functions" class="section level2">
-<h2>Functions</h2>
-<div id="native.showpopupplugin.coronaprovider_native_popup_social.showpopup" class="section level4">
-<h4><a href="../../plugin/CoronaProvider_native_popup_social/showPopup.html">native.showPopup()</a></h4>
-</div>
-<div id="native.canshowpopupplugin.coronaprovider_native_popup_social.canshowpopup" class="section level4">
-<h4><a href="../../plugin/CoronaProvider_native_popup_social/canShowPopup.html">native.canShowPopup()</a></h4>
-</div>
-</div>
-<div id="project-settings" class="section level2">
-<h2>Project Settings</h2>
-<p>To use this plugin, add an entry into the <code>plugins</code> table of <code>build.settings</code>. When added, the build server will integrate the plugin during the build phase.</p>
-<pre class="brush: lua;">settings =
-{
-    plugins =
-    {
-        ["CoronaProvider.native.popup.social"] =
-        {
-            publisherId = "com.coronalabs"
-        },
-    },
-}</pre>
+<div id="syntax" class="section level2">
+<h2>Syntax</h2>
+<p>object:useFrameForAnchors( [frameIndex] )</p>
+<div id="frameindex-optional" class="section level5">
+<h5>frameIndex <sub><sup>(optional)</sup></sub></h5>
+<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The frame index in the currently loaded sequence you want to use as reference. The default is the current frame, or 1 is none has been set. In a sprite sequence, <code>1</code> indicates the first frame <nobr>(not <code>0</code>)</nobr>.</p>
 <hr>
 <div id="footer">
 <p class="copyright">
@@ -137,6 +121,7 @@
 Help us help you! If you notice a problem with this page, please report it.
 </p>
 <p><a class="feedback-button" href="https://github.com/coronalabs/corona-docs/issues" target="_blank">Report an Issue</a></p>
+</div>
 </div>
 </div>
 </div>
