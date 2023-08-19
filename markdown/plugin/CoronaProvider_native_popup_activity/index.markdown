@@ -11,6 +11,17 @@
 
 The Activity Popup plugin displays the activity popup window which corresponds to `UIActivityViewController` on iOS.
 
+<div class="docs-tip-outer docs-tip-color-alert" style="width: 100%;">
+<div class="docs-tip-inner-left">
+<div class="fa fa-exclamation-circle" style="font-size: 35px;"></div>
+</div>
+<div class="docs-tip-inner-right">
+
+For Android, you have to use [Social Popup][plugin.CoronaProvider_native_popup_social] plugin.
+
+</div>
+</div>
+
 
 ## Syntax
 
