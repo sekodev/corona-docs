@@ -71,7 +71,7 @@
 </div>
 <div id="adaptive-scaling-resolutionindependence" class="section level1">
 <h1>Adaptive Scaling (Resolution Independence)</h1>
-<p>This guide outlines <strong>virtual pixels</strong> in Solar2D and explains how they can be made to behave like native iOS/Android virtual pixels using <strong>adaptive</strong> scaling.</p>
+<p>This guide outlines <strong>virtual pixels</strong> in Corona and explains how they can be made to behave like native iOS/Android virtual pixels using <strong>adaptive</strong> scaling.</p>
 <div class="guides-toc">
 <ul>
 <li><a href="#simple">Simple Content Scaling</a></li>
@@ -82,12 +82,12 @@
 <p><a id="simple"></a></p>
 <div id="simple-content-scaling" class="section level2">
 <h2>Simple Content Scaling</h2>
-<p>Solar2D offers its own scheme for virtual pixels known as <strong>content scaling</strong>. This allows developers to specify a common set of screen coordinates while Solar2D automatically scales text, vector objects, and images to different resolutions depending on the device.</p>
+<p>Corona offers its own scheme for virtual pixels known as <strong>content scaling</strong>. This allows developers to specify a common set of screen coordinates while Corona automatically scales text, vector objects, and images to different resolutions depending on the device.</p>
 <p>There are actually multiple ways to approach content scaling. The easiest way is to just choose a single <nobr>fixed-size</nobr> virtual screen as follows:</p>
 <ol style="list-style-type: decimal">
-<li><p>Define a content area <strong>width</strong> and <strong>height</strong> in virtual pixels <nobr>(Solar2D content units)</nobr>. This implicitly defines the virtual coordinate system to code around.</p></li>
-<li><p>Specify a <strong>scale</strong> mode such as <code>&quot;letterbox&quot;</code> or <code>&quot;zoomEven&quot;</code> — this determines how Solar2D fills the screen.</p></li>
-<li><p>If using <code>&quot;letterbox&quot;</code> mode, design for the empty letterbox regions which occur when the aspect ratio of the virtual screen and the actual device differs — these are like the black bars on a TV when the show is letterboxed, except that in Solar2D, these regions can (and should) have visual content drawn into them. Alternatively, if using <code>&quot;zoomEven&quot;</code> mode, understand that some visual content may bleed off the screen when the aspect ratio differs.</p></li>
+<li><p>Define a content area <strong>width</strong> and <strong>height</strong> in virtual pixels <nobr>(Corona content units)</nobr>. This implicitly defines the virtual coordinate system to code around.</p></li>
+<li><p>Specify a <strong>scale</strong> mode such as <code>&quot;letterbox&quot;</code> or <code>&quot;zoomEven&quot;</code> — this determines how Corona fills the screen.</p></li>
+<li><p>If using <code>&quot;letterbox&quot;</code> mode, design for the empty letterbox regions which occur when the aspect ratio of the virtual screen and the actual device differs — these are like the black bars on a TV when the show is letterboxed, except that in Corona, these regions can (and should) have visual content drawn into them. Alternatively, if using <code>&quot;zoomEven&quot;</code> mode, understand that some visual content may bleed off the screen when the aspect ratio differs.</p></li>
 </ol>
 <p>In practice, a simple <code>config.lua</code> may include values like these:</p>
 <pre class="brush: lua; gutter: false; highlight: [5,6,7]; first-line: 1;">application =
@@ -123,7 +123,7 @@
 </div>
 <div id="adaptive-content-scaling" class="section level2">
 <h2>Adaptive Content Scaling</h2>
-<p>Given the various drawbacks of simple content scaling, especially in <nobr>UI-centric</nobr> apps, it would be convenient if interface elements could be approximately the same size across all devices. Fortunately, Solar2D's <strong>adaptive</strong> content scaling addresses this while still providing nice pixel scales and eliminating letterbox regions.</p>
+<p>Given the various drawbacks of simple content scaling, especially in <nobr>UI-centric</nobr> apps, it would be convenient if interface elements could be approximately the same size across all devices. Fortunately, Corona's <strong>adaptive</strong> content scaling addresses this while still providing nice pixel scales and eliminating letterbox regions.</p>
 <p>To set adaptive content scaling, simply set the <code>scale</code> key within <code>config.lua</code> to <code>&quot;adaptive&quot;</code>:</p>
 <pre class="brush: lua; gutter: false; highlight: [5]; first-line: 1;">application =
 {
@@ -140,7 +140,7 @@ Note
 </div>
 <div id="core-principles" class="section level3">
 <h3>Core Principles</h3>
-<p>For adaptive scaling, Solar2D uses heuristics to determine an appropriate content width and height. There are three primary goals:</p>
+<p>For adaptive scaling, Corona uses heuristics to determine an appropriate content width and height. There are three primary goals:</p>
 <ol style="list-style-type: decimal">
 <li><p>The aspect ratio of the virtual screen should match the actual device screen, meaning that there are no letterbox regions.</p></li>
 <li><p>The preferred pixel scales should be whole numbers (or simple fractions) whenever possible.</p></li>
