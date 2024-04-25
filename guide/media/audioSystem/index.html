@@ -85,7 +85,7 @@
 </div>
 <div id="audio-usagefunctions" class="section level1">
 <h1>Audio Usage/Functions</h1>
-<p>This guide discusses how to use the Corona <a href="../../../api/library/audio/index.html">audio</a> library to play sound effects and streaming audio.</p>
+<p>This guide discusses how to use the <a href="../../../api/library/audio/index.html">audio</a> library to play sound effects and streaming audio.</p>
 <div class="guides-toc">
 <ul>
 <li><a href="#overview">Overview</a></li>
@@ -103,7 +103,7 @@
 <p><a id="overview"></a></p>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>The Corona <a href="../../../api/library/audio/index.html">audio</a> system gives you access to advanced <strong>OpenAL</strong> features. It features 32 distinct channels on which you can play sound effects or streaming audio files. The system offers a unique volume setting for each channel plus a master volume level for all channels.</p>
+<p><a href="../../../api/library/audio/index.html">Audio</a> system gives you access to advanced <strong>OpenAL</strong> features. It features 32 distinct channels on which you can play sound effects or streaming audio files. The system offers a unique volume setting for each channel plus a master volume level for all channels.</p>
 <p>The audio system is a &quot;best effort&quot; system. Requested sounds will play as quickly as possible, but there is no guarantee that they'll start or end at exact times. If you are streaming a song and there's a buffer underrun due to CPU stress, the audio system will continue playing as soon as it can, but the song may finish playing later than anticipated.</p>
 <p>Please read further to learn about audio API functions and methods, acceptable file formats, and performance tips.</p>
 <p><a id="soundstream"></a></p>
@@ -120,7 +120,7 @@
 </div>
 <div id="audio-formats" class="section level2">
 <h2>Audio Formats</h2>
-<p>The Corona audio system supports different formats depending on the environment/platform:</p>
+<p>Audio system supports different formats depending on the environment/platform:</p>
 <div class="inner-table">
 <table>
 <thead>
@@ -191,12 +191,12 @@
 </div>
 <div id="channels-and-volume" class="section level2">
 <h2>Channels and Volume</h2>
-<p>As stated in the overview, there are 32 audio channels available. Each sound effect or streaming audio track must play on a distinct channel. If you don't explicitly set the channel on which you want to play audio, Corona will attempt to locate a free channel on which to play the audio file.</p>
+<p>As stated in the overview, there are 32 audio channels available. Each sound effect or streaming audio track must play on a distinct channel. If you don't explicitly set the channel on which you want to play audio, Solar2D will attempt to locate a free channel on which to play the audio file.</p>
 <p>In some cases, it's useful to <strong>reserve</strong> certain channels for different purposes. For example, you may want to set different volume levels for music, speech, and sound effects. In this case, you can reserve a few channels toward the lower end of the range and effectively prevent <nobr>auto-assignment</nobr> on those channels. This is done via the <a href="../../../api/library/audio/reserveChannels.html">audio.reserveChannels()</a> API, wherein you block off channels 1 to <code>x</code> via <nobr><code>audio.reserveChannels( x )</code></nobr>. Then, assuming you reserve a few channels for music and speech, the remaining channels can be used for <nobr>auto-assigned</nobr> sound effects.</p>
-<p>Corona also provides various functions to check the status of a channel. These include <a href="../../../api/library/audio/isChannelActive.html">audio.isChannelActive()</a>, <a href="../../../api/library/audio/isChannelPlaying.html">audio.isChannelPlaying()</a>, and <a href="../../../api/library/audio/isChannelPaused.html">audio.isChannelPaused()</a>.</p>
+<p>There are various functions to check the status of a channel. These include <a href="../../../api/library/audio/isChannelActive.html">audio.isChannelActive()</a>, <a href="../../../api/library/audio/isChannelPlaying.html">audio.isChannelPlaying()</a>, and <a href="../../../api/library/audio/isChannelPaused.html">audio.isChannelPaused()</a>.</p>
 <div id="controlling-volume" class="section level3">
 <h3>Controlling Volume</h3>
-<p>The Corona audio system has both a &quot;master&quot; volume level and a volume level for each channel. Both the master volume and individual channel volumes can be controlled by passing a decimal representation of 0%-100% to the <a href="../../../api/library/audio/setVolume.html">audio.setVolume()</a> API. Note that the master volume is not necessarily the same as the device's internal volume, but all volume levels are scaled proportionally to that internal volume.</p>
+<p>Audio system has both a &quot;master&quot; volume level and a volume level for each channel. Both the master volume and individual channel volumes can be controlled by passing a decimal representation of 0%-100% to the <a href="../../../api/library/audio/setVolume.html">audio.setVolume()</a> API. Note that the master volume is not necessarily the same as the device's internal volume, but all volume levels are scaled proportionally to that internal volume.</p>
 <p>If you wish to set the master volume for <strong>all</strong> channels, simply pass a volume level without a channel specification as follows:</p>
 <pre class="brush: lua;">audio.setVolume( 0.5 )  --set the master volume to 50%</pre>
 <p>Or, to set the volume on a specific channel, pass an optional table with a <code>channel</code> key as follows:</p>
@@ -221,7 +221,7 @@ Notes
 </div>
 <div id="audio-handles" class="section level2">
 <h2>Audio Handles</h2>
-<p>When you load an audio file using either <a href="../../../api/library/audio/loadSound.html">audio.loadSound()</a> or <a href="../../../api/library/audio/loadStream.html">audio.loadStream()</a>, Corona returns a <strong>handle</strong> for that audio file. This handle can then be used to reference and play the audio file, assuming the handle remains in memory.</p>
+<p>When you load an audio file using either <a href="../../../api/library/audio/loadSound.html">audio.loadSound()</a> or <a href="../../../api/library/audio/loadStream.html">audio.loadStream()</a>, Solar2D returns a <strong>handle</strong> for that audio file. This handle can then be used to reference and play the audio file, assuming the handle remains in memory.</p>
 <p>The following example shows how to load a basic sound file into a handle <code>soundEffect</code> and play it immediately.</p>
 <pre class="brush: lua;">local soundEffect = audio.loadSound( "chime.wav" )
 audio.play( soundEffect )</pre>
@@ -278,7 +278,7 @@ audio.play( tickSound, { onComplete=bombExplode } )</pre>
 </div>
 <div id="controlling-audio" class="section level2">
 <h2>Controlling Audio</h2>
-<p>In addition to the <a href="#channelvolume">volume</a> control methods described above, Corona provides the following audio control functions:</p>
+<p>In addition to the <a href="#channelvolume">volume</a> control methods described above, following audio control functions are provided:</p>
 <div class="inner-table">
 <table>
 <thead>
