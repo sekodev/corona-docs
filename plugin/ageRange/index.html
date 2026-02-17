@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Cousine&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="icon" type="image/ico" href="/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Solar2D Documentation — Plugins | ageRange</title>
+  <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/shCoreDefault.css" />
+<script src="https://corona-cdn.coronalabs.com/js/docs.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9574984-14', 'auto');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div class="header"></div>
+<div class="title">
+	<span class="titleimg" onclick="window.location='https://docs.coronalabs.com/'"></span>
+	<div id="nav">
+		<ul>
+<li><a href="../../guide/programming/index.html">Getting Started</a></li>
+<li><a href="../../guide/index.html">Guides</a></li>
+<li><a href="../../api/index.html">API Reference</a></li>
+<li><a href="../../tutorial/index.html">Tutorials</a></li>
+<li><a href="../../plugin/index.html">Plugins</a></li>
+<li><a href="../../native/index.html">Solar2D Native</a></li>
+<li><a href="../../coronacards/index.html">CoronaCards</a></li>
+</ul>
+
+		<!--
+		<div id="resources-link"><a href="https://coronalabs.com/resources/">Corona Resources</a></div>
+		-->
+	</div>
+</div>
+
+<div class="SearchBar">
+  <form action="https://www.google.com/cse" id="cse-search-box">
+  <input type="hidden" name="cx" value="009283852522218786394:g40gqt2m6rq" />
+  <input type="hidden" name="ie" value="UTF-8" />
+  <input type="text" placeholder="Search" name="q" id="q" autocomplete="off" size="40" />
+  <input type="submit" name="sa" value="Search" />
+  </form>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#agerange.">ageRange.*</a><ul>
+<li><a href="#overview">Overview</a><ul>
+<li><a href="#platform-differences">Platform Differences</a></li>
+</ul></li>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#agerange.initplugin.agerange.init"><span>ageRange.init()</span></a></li>
+<li><a href="#agerange.requestagerangeplugin.agerange.requestagerange"><span>ageRange.requestAgeRange()</span></a></li>
+<li><a href="#agerange.requestsignificantupdatepermissionplugin.agerange.requestsignificantupdatepermission"><span>ageRange.requestSignificantUpdatePermission()</span></a></li>
+<li><a href="#agerange.requestcommunicationpermissionplugin.agerange.requestcommunicationpermission"><span>ageRange.requestCommunicationPermission()</span></a></li>
+<li><a href="#agerange.startlisteningforcommunicationresponsesplugin.agerange.startlisteningforcommunicationresponses"><span>ageRange.startListeningForCommunicationResponses()</span></a></li>
+</ul></li>
+<li><a href="#events">Events</a><ul>
+<li><a href="#agerangeplugin.agerange.event.agerange"><span>ageRange</span></a></li>
+<li><a href="#significantupdateeventplugin.agerange.event.significantupdate"><span>significantUpdateEvent</span></a></li>
+<li><a href="#communicationeventplugin.agerange.event.communication"><span>communicationEvent</span></a></li>
+</ul></li>
+<li><a href="#project-settings">Project Settings</a><ul>
+<li><a href="#ios-requirements">iOS Requirements</a></li>
+<li><a href="#android-requirements">Android Requirements</a></li>
+</ul></li>
+<li><a href="#sample-code">Sample Code</a></li>
+<li><a href="#support">Support</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="breadcrumb">
+<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../plugin/index.html">Plugins</a>  ▸  <a href="../../plugin/ageRange/index.html">ageRange</a>
+</div>
+<section id="agerange." class="level1">
+<h1>ageRange.*</h1>
+<blockquote>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type</strong></td>
+<td style="text-align: left;"><a href="../../api/type/Library.html">Library</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Revision</strong></td>
+<td style="text-align: left;"><a href="__REVISION_URL__">Release 2026.3728</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Keywords</strong></td>
+<td style="text-align: left;">age, age range, age verification, parental controls, COPPA, iOS 26, Android</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Platforms</strong></td>
+<td style="text-align: left;">Android, iOS</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<section id="overview" class="level2">
+<h2>Overview</h2>
+<p>The Age Range plugin provides access to Apple’s Declared Age Range framework (iOS 26.0+) and Google’s Age Signals API (Android) for age verification and parental control management. This plugin helps apps comply with age-related regulations including state laws requiring parental consent for minors.</p>
+<section id="platform-differences" class="level3">
+<h3>Platform Differences</h3>
+<p><strong>iOS (iOS 26.0+)</strong> - Uses Apple’s Declared Age Range framework - Integrates with Screen Time and Family Sharing - Supports custom age gates (13, 15, 18, etc.) - Provides detailed parental control information - Supports PermissionKit for communication and update approvals</p>
+<p><strong>Android</strong> - Uses Google Play’s Age Signals API - Integrates with Family Link supervision - Returns age ranges for supervised users - Checks approval status through Play Console - Limited real-time permission support</p>
+</section>
+</section>
+<section id="syntax" class="level2">
+<h2>Syntax</h2>
+<pre class="brush: lua;">local ageRange = require("plugin.ageRange")</pre>
+</section>
+<section id="functions" class="level2">
+<h2>Functions</h2>
+<section id="agerange.initplugin.agerange.init" class="level4">
+<h4><a href="../../plugin/ageRange/init.html">ageRange.init()</a></h4>
+</section>
+<section id="agerange.requestagerangeplugin.agerange.requestagerange" class="level4">
+<h4><a href="../../plugin/ageRange/requestAgeRange.html">ageRange.requestAgeRange()</a></h4>
+</section>
+<section id="agerange.requestsignificantupdatepermissionplugin.agerange.requestsignificantupdatepermission" class="level4">
+<h4><a href="../../plugin/ageRange/requestSignificantUpdatePermission.html">ageRange.requestSignificantUpdatePermission()</a></h4>
+</section>
+<section id="agerange.requestcommunicationpermissionplugin.agerange.requestcommunicationpermission" class="level4">
+<h4><a href="../../plugin/ageRange/requestCommunicationPermission.html">ageRange.requestCommunicationPermission()</a></h4>
+</section>
+<section id="agerange.startlisteningforcommunicationresponsesplugin.agerange.startlisteningforcommunicationresponses" class="level4">
+<h4><a href="../../plugin/ageRange/startListeningForCommunicationResponses.html">ageRange.startListeningForCommunicationResponses()</a></h4>
+</section>
+</section>
+<section id="events" class="level2">
+<h2>Events</h2>
+<section id="agerangeplugin.agerange.event.agerange" class="level4">
+<h4><a href="../../plugin/ageRange/event/ageRange.html">ageRange</a></h4>
+</section>
+<section id="significantupdateeventplugin.agerange.event.significantupdate" class="level4">
+<h4><a href="../../plugin/ageRange/event/significantUpdate/index.html">significantUpdateEvent</a></h4>
+</section>
+<section id="communicationeventplugin.agerange.event.communication" class="level4">
+<h4><a href="../../plugin/ageRange/event/communication/index.html">communicationEvent</a></h4>
+</section>
+</section>
+<section id="project-settings" class="level2">
+<h2>Project Settings</h2>
+<p>To use this plugin, add an entry into the <code>plugins</code> table of <code>build.settings</code>. When added, the build server will integrate the plugin during the build phase.</p>
+<pre class="brush: lua;">settings =
+{
+    plugins =
+    {
+        ["plugin.ageRange"] =
+        {
+            publisherId = "com.solar2d"
+        },
+    },
+}</pre>
+<section id="ios-requirements" class="level3">
+<h3>iOS Requirements</h3>
+<p>Add the following to your <code>build.settings</code> for iOS:</p>
+<pre class="brush: lua;">settings =
+{
+    iphone =
+    {
+        plist =
+        {
+            -- Required for Declared Age Range
+            ["com.apple.developer.declared-age-range"] = true,
+        },
+    },
+}</pre>
+</section>
+<section id="android-requirements" class="level3">
+<h3>Android Requirements</h3>
+<p>Ensure Google Play Services is up to date. The Age Signals API requires: - Google Play Store installed and enabled - Google Play Services 22.0.0 or later</p>
+</section>
+</section>
+<section id="sample-code" class="level2">
+<h2>Sample Code</h2>
+<pre class="brush: lua;">local ageRange = require("plugin.ageRange")
+
+local function ageRangeListener(event)
+    if event.name == "ageRangeEvent" then
+        if event.isError then
+            print("Error:", event.errorMessage)
+        elseif not event.isAvailable then
+            print("Age range not available")
+        elseif event.declined then
+            print("User declined to share age range")
+        else
+            print("Age range received:")
+            print("  Lower bound:", event.lowerBound)
+            print("  Upper bound:", event.upperBound)
+            print("  User status:", event.userStatus)
+            
+            if event.userStatus == "verified" then
+                -- User is 18+, grant full access
+            elseif event.userStatus == "supervised" then
+                -- User has parental controls, restrict content
+            end
+        end
+        
+    elseif event.name == "significantUpdateEvent" then
+        if event.questionSent then
+            print("Update permission request sent")
+        elseif event.approved then
+            print("Update approved by parent")
+        end
+        
+    elseif event.name == "communicationEvent" then
+        if event.questionSent then
+            print("Communication request sent")
+        elseif event.approved then
+            print("Communication approved by parent")
+        end
+    end
+end
+
+-- Initialize the plugin
+ageRange.init(ageRangeListener)
+
+-- Request age range
+ageRange.requestAgeRange()</pre>
+</section>
+<section id="support" class="level2">
+<h2>Support</h2>
+<ul>
+<li>GitHub: <a href="https://github.com/solar2d/plugin.ageRange">https://github.com/solar2d/plugin.ageRange</a></li>
+<li>Documentation: <a href="https://docs.coronalabs.com/plugin/ageRange">https://docs.coronalabs.com/plugin/ageRange</a></li>
+</ul>
+<hr>
+<div id="footer">
+<p class="copyright">
+© 2020-2026 Solar2D. All Rights Reserved.
+</p>
+<p class="feedback">
+Help us help you! If you notice a problem with this page, please report it.
+</p>
+<p><a class="feedback-button" href="https://github.com/coronalabs/corona-docs/issues" target="_blank">Report an Issue</a></p>
+</div>
+</section>
+</section>
+<script src="https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shCore.js" type="text/javascript"></script>
+<script src="https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shAutoloader.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // Define syntax highlighting scripts.
+    // N.B.: As a safeguard, you will need to whitelist the brush in filter-SyntaxHighlighter.py
+
+    SyntaxHighlighter.autoloader(
+      ['c#','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushCSharp.js'],
+      ['java','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushJava.js'],
+      ['js','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushJScript.js'],
+      ['lua','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushLua.js'],
+      ['php','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushPhp.js'],
+      ['sql','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushSql.js'],
+      ['xml','https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shBrushXml.js']
+    );
+
+    // Set default configurations.
+    SyntaxHighlighter.defaults['gutter'] = false; // Disable line numbers.
+    SyntaxHighlighter.defaults['toolbar'] = false; // Disable link back to author's site. :(
+	SyntaxHighlighter.defaults['quick-code'] = false; // Disable double click feature
+
+    // Perform the highlighting.
+    SyntaxHighlighter.all();
+</script>
+</body>
+</html>

@@ -448,14 +448,10 @@ Important
 <td style="text-align: left;">Windows desktop</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>["android-nongoogle"]</code></td>
-<td style="text-align: left;">Galaxy Store</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><code>["android-kindle"]</code></td>
 <td style="text-align: left;">Amazon Kindle</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>["iphone-sim"]</code></td>
 <td style="text-align: left;">Xcode iOS Simulator</td>
 </tr>
@@ -466,15 +462,11 @@ Important
 <div class="notebox-title">
 Note
 </div>
-<ul>
-<li>Omitting the <code>supportedPlatforms</code> table effectively includes the plugin on all platforms that it inherently supports.</li>
-<li>When building your app, you must set Target App Store to Samsung for the <code>["android-nongoogle"]</code> key to take effect. <strong>Note:</strong> This feature is available in Solar2D <strong>2022.3665</strong> and later.</li>
-</ul>
+<p>Omitting the <code>supportedPlatforms</code> table effectively includes the plugin on all platforms that it inherently supports.</p>
 </div>
 <section id="forcing-plugin-versions" class="level3">
 <h3>Forcing Plugin versions</h3>
-<p>You can set versions to be the same as GitHub tag name for the release for plugin found on <a href="https://plugins.solar2d.com">the Solar2D Free Plugins Directory</a>. For the plugin in example <a href="https://github.com/coronalabs/com.coronalabs-CoronaProvider.native.popup.activity/releases">here are available releases</a>.</p>
-<p><strong>Note:</strong> This feature is available in Solar2D <strong>2022.3676</strong> and later.</p>
+<p>You can set versions to be the same as GitHub tag name for the release for plugin found on <a href="https://plugins.solar2d.com">the Solar2D Free Plugins Directory</a>. For the plugin in example <a href="https://github.com/coronalabs/com.coronalabs-CoronaProvider.native.popup.activity/releases">here are available releases</a> Note this requires Solar2D 3676+</p>
 <pre class="brush: lua;">plugins = {
      ["com.coronalabs-CoronaProvider.native.popup.activity"] = {
                 publisherId = "com.coronalabs",
@@ -499,7 +491,7 @@ Note
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2020-2025 Solar2D All Rights Reserved.
+© 2020-2026 Solar2D. All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.

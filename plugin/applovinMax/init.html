@@ -63,6 +63,7 @@
 </ul></li>
 <li><a href="#parameter-reference">Parameter Reference</a><ul>
 <li><a href="#verboselogging-optional">verboseLogging <sub><sup>(optional)</sup></sub></a></li>
+<li><a href="#sdkkey-optional">sdkKey <sub><sup>(optional)</sup></sub></a></li>
 <li><a href="#testmode-optional">testMode <sub><sup>(optional)</sup></sub></a></li>
 </ul></li>
 <li><a href="#example">Example</a></li>
@@ -87,7 +88,7 @@
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Revision</strong></td>
-<td style="text-align: left;"><a href="https://solar2d.com/download/">Release 2025.3721</a></td>
+<td style="text-align: left;"><a href="https://solar2d.com/download/">Release 2026.3728</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Keywords</strong></td>
@@ -138,6 +139,10 @@ Note
 <h5>verboseLogging <sub><sup>(optional)</sup></sub></h5>
 <p><em><a href="../../api/type/Boolean.html">Boolean</a>.</em> Set this to <code>true</code> to output AppLovin logs to the console.</p>
 </section>
+<section id="sdkkey-optional" class="level5">
+<h5>sdkKey <sub><sup>(optional)</sup></sub></h5>
+<p><em><a href="../../api/type/String.html">String</a>.</em> You can manually set sdkKey</p>
+</section>
 <section id="testmode-optional" class="level5">
 <h5>testMode <sub><sup>(optional)</sup></sub></h5>
 <p><em><a href="../../api/type/Boolean.html">Boolean</a>.</em> Set this to <code>true</code> to enable test mode. When <code>true</code>, test mode will take immediate effect and this will override the test mode setting in the <a href="https://dash.applovin.com">AppLovin developer portal</a>.</p>
@@ -153,13 +158,22 @@ local function adListener( event )
         print( event.isError )
     end
 end
+-- Choose sdkKey depending on platform
+local sdkKey
+if system.getInfo("platform") == "android" then
+    sdkKey = "YOUR_ANDROID_SDK_KEY"
+elseif system.getInfo("platform") == "ios" then
+    sdkKey = "YOUR_IOS_SDK_KEY"
+else
+    sdkKey = "" -- fallback (unsupported)
+end
 
 -- Initialize the AppLovin plugin
-applovinMax.init( adListener, { testMode=true } )</pre>
+applovinMax.init( adListener, { testMode=true, sdkKey = sdkKey } )</pre>
 <hr>
 <div id="footer">
 <p class="copyright">
-© 2020-2025 Solar2D All Rights Reserved.
+© 2020-2026 Solar2D. All Rights Reserved.
 </p>
 <p class="feedback">
 Help us help you! If you notice a problem with this page, please report it.
