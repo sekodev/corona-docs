@@ -62,6 +62,7 @@
 <li><a href="#native.canshowpopupplugin.coronaprovider_native_popup_social.canshowpopup"><span>native.canShowPopup()</span></a></li>
 </ul></li>
 <li><a href="#project-settings">Project Settings</a></li>
+<li><a href="#example">Example</a></li>
 </ul></li>
 </ul>
 </div>
@@ -128,6 +129,15 @@
         },
     },
 }</pre>
+</section>
+<section id="example" class="level2">
+<h2>Example</h2>
+<pre class="brush: lua;">local itemsSocial = {
+    image = { filename = "icon.png", baseDir = system.resourceDirectory },
+    url = { "https://solar2d.com/" }
+}
+
+native.showPopup( "social", itemsSocial )</pre>
 <hr>
 <div id="footer">
 <p class="copyright">
