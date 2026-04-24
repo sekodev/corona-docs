@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>Solar2D Documentation — API Reference | Libraries | display | enableStatistics</title>
+  <title>Solar2D Documentation — API Reference | Libraries | display | getTimings</title>
   <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
   <link rel="stylesheet" href="../../../css/style.css" />
   <link rel="stylesheet" href="../../../css/shCoreDefault.css" />
@@ -55,20 +55,24 @@
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#display.enablestatistics">display.enableStatistics()</a><ul>
+<li><a href="#display.gettimings">display.getTimings()</a><ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#gotchas">Gotchas</a></li>
 <li><a href="#syntax">Syntax</a><ul>
-<li><a href="#enable-required">enable <sub><sup>(required)</sup></sub></a></li>
+<li><a href="#table-optional">table <sub><sup>(optional)</sup></sub></a></li>
+<li><a href="#category-required">category <sub><sup>(required)</sup></sub></a></li>
 </ul></li>
+<li><a href="#return-value">Return Value</a><ul>
+<li><a href="#table-structure">Table Structure</a></li>
+</ul></li>
+<li><a href="#example">Example</a></li>
 </ul></li>
 </ul>
 </div>
 <div id="breadcrumb">
-<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../../api/index.html">API Reference</a>  ▸  <a href="../../../api/library/index.html">Libraries</a>  ▸  <a href="../../../api/library/display/index.html">display</a>  ▸  <a href="../../../api/library/display/enableStatistics.html">enableStatistics</a>
+<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../../api/index.html">API Reference</a>  ▸  <a href="../../../api/library/index.html">Libraries</a>  ▸  <a href="../../../api/library/display/index.html">display</a>  ▸  <a href="../../../api/library/display/getTimings.html">getTimings</a>
 </div>
-<section id="display.enablestatistics" class="level1">
-<h1>display.enableStatistics()</h1>
+<section id="display.gettimings" class="level1">
+<h1>display.getTimings()</h1>
 <blockquote>
 <table>
 <tbody>
@@ -81,38 +85,112 @@
 <td style="text-align: left;"><a href="../../../api/library/display/index.html">display.*</a></td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;"><strong>Return value</strong></td>
+<td style="text-align: left;"><a href="../../../api/type/Number.html">Number</a></td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"><strong>Revision</strong></td>
 <td style="text-align: left;"><a href="https://solar2d.com/download/">Release 2026.3728</a></td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Keywords</strong></td>
-<td style="text-align: left;">performance, statistics, debug, draw calls, rendering</td>
-</tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>See also</strong></td>
-<td style="text-align: left;">[display.getStatistics()][api.library.display.getStatistics]</td>
+<td style="text-align: left;"><strong>Keywords</strong></td>
+<td style="text-align: left;">performance, profiling, timing, debug</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="../../../api/library/display/getTimings.html">display.getTimings()</a></td>
+<td style="text-align: left;"><strong>See also</strong></td>
+<td style="text-align: left;"><a href="../../../api/library/display/enableStatistics.html">display.enableStatistics()</a></td>
 </tr>
 </tbody>
 </table>
 </blockquote>
 <section id="overview" class="level2">
 <h2>Overview</h2>
-<p>Enables or disables the collection of per‑frame rendering statistics. When enabled, Solar2D tracks high‑level counters such as the number of draw calls, triangles rendered, and texture bindings. These statistics can then be retrieved with [display.getStatistics()][api.library.display.getStatistics].</p>
-</section>
-<section id="gotchas" class="level2">
-<h2>Gotchas</h2>
-<p>Enabling statistics has a <strong>performance cost</strong>, so it should only be used for debugging and profiling purposes, not in production builds.</p>
+<p>Returns a detailed, hierarchical breakdown of frame timings for the <code>"update"</code> and <code>"render"</code> phases of the engine. This function is useful for profiling and debugging performance issues in your project.</p>
+<p>The engine internally records timestamps at significant steps during each frame—such as before and after event dispatch, physics updates, and drawing operations. <code>display.getTimings()</code> retrieves these measurements, providing insight into where time is being spent.</p>
+<p>Timings are reported in <strong>microseconds</strong> and are reset at the beginning of each new frame. To obtain meaningful data, you should call this function once per frame, typically from a <code>lateUpdate</code> listener or a repeating timer.</p>
 </section>
 <section id="syntax" class="level2">
 <h2>Syntax</h2>
-<pre class="brush: lua;">display.enableStatistics( enable )</pre>
-<section id="enable-required" class="level5">
-<h5>enable <sub><sup>(required)</sup></sub></h5>
-<p><em><a href="../../../api/type/Boolean.html">Boolean</a>.</em> Pass <code>true</code> to start collecting statistics, or <code>false</code> to stop.</p>
+<pre class="brush: lua;">display.getTimings( [table,] category )</pre>
+<section id="table-optional" class="level5">
+<h5>table <sub><sup>(optional)</sup></sub></h5>
+<p><em><a href="../../../api/type/Table.html">Table</a>.</em> An optional table to fill with the timing results. If provided, the table is cleared and reused for performance. If omitted, a new table is created and returned.</p>
+</section>
+<section id="category-required" class="level5">
+<h5>category <sub><sup>(required)</sup></sub></h5>
+<p><em><a href="../../../api/type/String.html">String</a>.</em> The timing category to retrieve. Valid values are:</p>
+<ul>
+<li><code>"update"</code> — Timings from the update phase (Lua code, event listeners, physics, etc.)</li>
+<li><code>"render"</code> — Timings from the render phase (drawing operations)</li>
+</ul>
+</section>
+</section>
+<section id="return-value" class="level2">
+<h2>Return Value</h2>
+<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The number of elements added to the table (or the newly created table). The table structure alternates between:</p>
+<ul>
+<li>A <strong>string label</strong> describing the timing point, followed by a <strong>number</strong> representing the elapsed time in microseconds, <em>or</em></li>
+<li>A <strong>string sublist name</strong> followed by <code>nil</code>, indicating the start of a nested timing scope</li>
+</ul>
+<p>Sublists allow for hierarchical timing data—for example, an event listener may have its own internal timings that are grouped under its name.</p>
+<section id="table-structure" class="level3">
+<h3>Table Structure</h3>
+<pre class="brush: lua;">-- For 'update' category
+{
+  "Display::Update Begin", 0,
+  "Run sprite player", 1,
+  "Queue updatables", 2,
+  "Prepare for frame event", 3,
+  "enterFrame (event)", false,
+  "FrameEvent", 89,
+  "LateUpdate", 103,
+  "Display::Update End", 104,
+  -- ... more entries
+}
+
+-- For 'render' category
+{
+  "Display::Render Begin", 0,
+  "Scene: Begin Render", 16,
+  "Scene: Preload", 22,
+  "Scene: UpdateTextures", 23,
+  "Scene: Setup", 25,
+  "Scene: Issue Clear Command", 27,
+  "Scene: Issue Draw Commands", 59,
+  -- ... more entries
+}</pre>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Example</h2>
+<pre class="brush: lua;">local timings = {}
+
+local function printTimings(category)
+    local sizeTimings = display.getTimings(timings, category)
+    print("> " .. category)
+
+    for i = 1, sizeTimings, 2 do
+        local key = timings[i]
+        local value = timings[i + 1]
+
+        if type(value) == "boolean" then
+            -- Converting boolean value to string
+            value = timings[ i + 1 ] and 'true' or 'false'
+        else
+            -- convert μs to miliseconds
+            value = (value / 1000) .. " ms"
+        end
+
+        print (key .. " -> " .. value .. "\n")
+    end
+end
+
+Runtime:addEventListener("lateUpdate", function ()
+    printTimings("update")
+    print("")
+    printTimings("render")
+    print("&lt;&lt;>>")
+end)</pre>
 <hr>
 <div id="footer">
 <p class="copyright">
@@ -123,7 +201,6 @@ Help us help you! If you notice a problem with this page, please report it.
 </p>
 <p><a class="feedback-button" href="https://github.com/coronalabs/corona-docs/issues" target="_blank">Report an Issue</a></p>
 </div>
-</section>
 </section>
 </section>
 <script src="https://corona-cdn.coronalabs.com/js/SyntaxHighlighter/shCore.js" type="text/javascript"></script>
