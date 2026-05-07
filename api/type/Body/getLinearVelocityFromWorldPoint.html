@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>Solar2D Documentation — API Reference | type | ScrollViewWidget | setSize</title>
+  <title>Solar2D Documentation — API Reference | type | Body | getLinearVelocityFromWorldPoint</title>
   <meta name="description" content="Solar2D lets you build games/apps for all major platforms including iOS, Android, Kindle, Apple TV, Android TV, macOS, and Windows. Get the free toolset!" />
   <link rel="stylesheet" href="../../../css/style.css" />
   <link rel="stylesheet" href="../../../css/shCoreDefault.css" />
@@ -55,22 +55,22 @@
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#objectsetsize">object:setSize()</a><ul>
+<li><a href="#objectgetlinearvelocityfromworldpoint">object:getLinearVelocityFromWorldPoint()</a><ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#gotchas">Gotchas</a></li>
 <li><a href="#syntax">Syntax</a><ul>
-<li><a href="#newwidth-required">newWidth <sub><sup>(required)</sup></sub></a></li>
-<li><a href="#newheight-required">newHeight <sub><sup>(required)</sup></sub></a></li>
+<li><a href="#worldx-required">worldX <sub><sup>(required)</sup></sub></a></li>
+<li><a href="#worldy-required">worldY <sub><sup>(required)</sup></sub></a></li>
 </ul></li>
+<li><a href="#return-value">Return Value</a></li>
 <li><a href="#example">Example</a></li>
 </ul></li>
 </ul>
 </div>
 <div id="breadcrumb">
-<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../../api/index.html">API Reference</a>  ▸  <a href="../../../api/type/index.html">type</a>  ▸  <a href="../../../api/type/ScrollViewWidget/index.html">ScrollViewWidget</a>  ▸  <a href="../../../api/type/ScrollViewWidget/setSize.html">setSize</a>
+<a href="https://docs.coronalabs.com">Documentation</a>  ▸  <a href="../../../api/index.html">API Reference</a>  ▸  <a href="../../../api/type/index.html">type</a>  ▸  <a href="../../../api/type/Body/index.html">Body</a>  ▸  <a href="../../../api/type/Body/getLinearVelocityFromWorldPoint.html">getLinearVelocityFromWorldPoint</a>
 </div>
-<section id="objectsetsize" class="level1">
-<h1>object:setSize()</h1>
+<section id="objectgetlinearvelocityfromworldpoint" class="level1">
+<h1>object:getLinearVelocityFromWorldPoint()</h1>
 <blockquote>
 <table>
 <tbody>
@@ -79,63 +79,78 @@
 <td style="text-align: left;"><a href="../../../api/type/Function.html">Function</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Library</strong></td>
-<td style="text-align: left;"><a href="../../../api/library/widget/index.html">widget.*</a></td>
+<td style="text-align: left;"><strong>Object</strong></td>
+<td style="text-align: left;"><a href="../../../api/type/Body/index.html">Body</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Return value</strong></td>
-<td style="text-align: left;"><a href="../../../api/type/Number.html">Number</a></td>
+<td style="text-align: left;"><strong>Library</strong></td>
+<td style="text-align: left;"><a href="../../../api/library/physics/index.html">physics.*</a></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;"><strong>Return value</strong></td>
+<td style="text-align: left;"><a href="../../../api/type/Number.html">Numbers</a></td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;"><strong>Revision</strong></td>
 <td style="text-align: left;"><a href="https://solar2d.com/download/">Release 2026.3728</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><strong>Keywords</strong></td>
-<td style="text-align: left;">widget, scroll view, ScrollViewWidget, setSize, width, height</td>
+<td style="text-align: left;">body, velocity, world point, linear velocity</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><strong>See also</strong></td>
-<td style="text-align: left;"><a href="../../../api/type/ScrollViewWidget/setScrollWidth.html">object:setScrollWidth()</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="../../../api/type/ScrollViewWidget/setScrollHeight.html">object:setScrollHeight()</a></td>
+<td style="text-align: left;"><a href="../../../api/type/Body/getLinearVelocityFromLocalPoint.html">object:getLinearVelocityFromLocalPoint()</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="../../../api/library/widget/newScrollView.html">widget.newScrollView()</a></td>
+<td style="text-align: left;"><a href="../../../api/type/Body/getWorldVector.html">object:getWorldVector()</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><a href="../../../api/type/ScrollViewWidget/index.html">ScrollViewWidget</a></td>
+<td style="text-align: left;"><a href="../../../api/type/Body/getLinearVelocity.html">object:getLinearVelocity()</a></td>
 </tr>
 </tbody>
 </table>
 </blockquote>
 <section id="overview" class="level2">
 <h2>Overview</h2>
-<p>Updates the width and height of a <a href="../../../api/type/ScrollViewWidget/index.html">ScrollViewWidget</a>. Note that if the scrollWidth or scrollHeight were set or changed, they will be overridden and require to be set once more after this function is called.</p>
-</section>
-<section id="gotchas" class="level2">
-<h2>Gotchas</h2>
-<p>This method will alter the scroll bar’s horizontal position. To fix this issue, call <a href="../../../api/type/ScrollViewWidget/setScrollWidth.html">object:setScrollWidth()</a> immediately afterwards. If you choose not to reset the scroll width, hiding the scroll bar is recommended.</p>
+<p>Returns the linear velocity of the point on the body that is located at the given world‑space coordinates. This is useful when you need to know the velocity of a specific point on a rotating body — the velocity there is a combination of the body’s linear velocity and its angular velocity.</p>
 </section>
 <section id="syntax" class="level2">
 <h2>Syntax</h2>
-<pre class="brush: lua;">object:setSize( newWidth, newHeight )</pre>
-<section id="newwidth-required" class="level5">
-<h5>newWidth <sub><sup>(required)</sup></sub></h5>
-<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The new width.</p>
+<pre class="brush: lua;">object:getLinearVelocityFromWorldPoint( worldX, worldY )</pre>
+<section id="worldx-required" class="level5">
+<h5>worldX <sub><sup>(required)</sup></sub></h5>
+<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The x coordinate of the point in world space.</p>
 </section>
-<section id="newheight-required" class="level5">
-<h5>newHeight <sub><sup>(required)</sup></sub></h5>
-<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The new height.</p>
+<section id="worldy-required" class="level5">
+<h5>worldY <sub><sup>(required)</sup></sub></h5>
+<p><em><a href="../../../api/type/Number.html">Number</a>.</em> The y coordinate of the point in world space.</p>
 </section>
+</section>
+<section id="return-value" class="level2">
+<h2>Return Value</h2>
+<p>Two numbers: the x and y components of the linear velocity at that world point, in <strong>pixels per second</strong>. If the body is absent, <code>nil</code> is returned for both.</p>
 </section>
 <section id="example" class="level2">
 <h2>Example</h2>
-<pre class="brush: lua;">scrollView:setSize( 900, 2000 )</pre>
+<pre class="brush: lua;">-- Create a rectangle and add a physics body
+local myRect = display.newRect( 150, 150, 80, 40 )
+physics.addBody( myRect, "dynamic", { density = 1.0 } )
+
+-- Give it some linear and angular velocity
+myRect:setLinearVelocity( 50, 0 )   -- moving right
+myRect.angularVelocity = 90         -- rotating clockwise (degrees per second)
+
+-- Choose a world point away from the center (e.g., near the right edge)
+local worldX, worldY = myRect.x + 40, myRect.y + 20
+
+-- Get the velocity of that point
+local vx, vy = myRect:getLinearVelocityFromWorldPoint( worldX, worldY )
+if vx and vy then
+    print( "Velocity at world point (" .. worldX .. ", " .. worldY .. "): " .. vx .. ", " .. vy )
+end</pre>
 <hr>
 <div id="footer">
 <p class="copyright">
